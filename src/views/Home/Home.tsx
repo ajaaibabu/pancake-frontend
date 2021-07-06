@@ -1,10 +1,10 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Heading, Text, BaseLayout } from '@pancakeswap/uikit'
+import { Heading, Text, BaseLayout } from '@panphoenixswap/uikit'
 import { useTranslation } from 'contexts/Localization'
 import Page from 'components/layout/Page'
 import FarmStakingCard from 'views/Home/components/FarmStakingCard'
-import CakeStats from 'views/Home/components/CakeStats'
+import phoenixStats from 'views/Home/components/phoenixStats'
 import TotalValueLockedCard from 'views/Home/components/TotalValueLockedCard'
 import EarnAPRCard from 'views/Home/components/EarnAPRCard'
 import EarnAssetCard from 'views/Home/components/EarnAssetCard'
@@ -91,7 +91,7 @@ const Home: React.FC = () => {
     <Page>
       <Hero>
         <Heading as="h1" scale="xl" mb="24px" color="secondary">
-          {t('PancakeSwap')}
+          {t('PanphoenixSwap')}
         </Heading>
         <Text>{t('The #1 AMM and yield farm on Binance Smart Chain.')}</Text>
       </Hero>
@@ -106,7 +106,7 @@ const Home: React.FC = () => {
           <WinCard />
         </CTACards>
         <Cards>
-          <CakeStats />
+          <phoenixStats />
           <TotalValueLockedCard />
         </Cards>
       </div>

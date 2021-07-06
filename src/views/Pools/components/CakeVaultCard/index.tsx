@@ -1,11 +1,11 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Box, CardBody, Flex, Text, useMatchBreakpoints } from '@pancakeswap/uikit'
+import { Box, CardBody, Flex, Text, useMatchBreakpoints } from '@panphoenixswap/uikit'
 import { useTranslation } from 'contexts/Localization'
 import { useWeb3React } from '@web3-react/core'
 import UnlockButton from 'components/UnlockButton'
 import tokens from 'config/constants/tokens'
-import { useCakeVault } from 'state/hooks'
+import { usephoenixVault } from 'state/hooks'
 import { Pool } from 'state/types'
 import AprRow from '../PoolCard/AprRow'
 import { StyledCard, StyledCardInner } from '../PoolCard/StyledCard'
@@ -13,25 +13,25 @@ import CardFooter from '../PoolCard/CardFooter'
 import StyledCardHeader from '../PoolCard/StyledCardHeader'
 import VaultCardActions from './VaultCardActions'
 import UnstakingFeeCountdownRow from './UnstakingFeeCountdownRow'
-import RecentCakeProfitRow from './RecentCakeProfitRow'
+import RecentphoenixProfitRow from './RecentphoenixProfitRow'
 
 const StyledCardBody = styled(CardBody)<{ isLoading: boolean }>`
   min-height: ${({ isLoading }) => (isLoading ? '0' : '254px')};
 `
 
-interface CakeVaultProps {
+interface phoenixVaultProps {
   pool: Pool
   showStakedOnly: boolean
 }
 
-const CakeVaultCard: React.FC<CakeVaultProps> = ({ pool, showStakedOnly }) => {
+const phoenixVaultCard: React.FC<phoenixVaultProps> = ({ pool, showStakedOnly }) => {
   const { t } = useTranslation()
   const { isXl } = useMatchBreakpoints()
   const { account } = useWeb3React()
   const {
     userData: { userShares, isLoading: isVaultUserDataLoading },
     fees: { performanceFee },
-  } = useCakeVault()
+  } = usephoenixVault()
 
   const accountHasSharesStaked = userShares && userShares.gt(0)
   const isLoading = !pool.userData || isVaultUserDataLoading
@@ -47,13 +47,13 @@ const CakeVaultCard: React.FC<CakeVaultProps> = ({ pool, showStakedOnly }) => {
         <StyledCardHeader
           isStaking={accountHasSharesStaked}
           isAutoVault
-          earningToken={tokens.cake}
-          stakingToken={tokens.cake}
+          earningToken={tokens.phoenix}
+          stakingToken={tokens.phoenix}
         />
         <StyledCardBody isLoading={isLoading}>
           <AprRow pool={pool} performanceFee={performanceFeeAsDecimal} />
           <Box mt="24px">
-            <RecentCakeProfitRow />
+            <RecentphoenixProfitRow />
           </Box>
           <Box mt="8px">
             <UnstakingFeeCountdownRow />
@@ -77,4 +77,4 @@ const CakeVaultCard: React.FC<CakeVaultProps> = ({ pool, showStakedOnly }) => {
   )
 }
 
-export default CakeVaultCard
+export default phoenixVaultCard

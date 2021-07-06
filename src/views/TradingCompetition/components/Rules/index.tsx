@@ -1,5 +1,5 @@
 import React from 'react'
-import { Flex, Text } from '@pancakeswap/uikit'
+import { Flex, Text } from '@panphoenixswap/uikit'
 import styled from 'styled-components'
 import { useTranslation } from 'contexts/Localization'
 import RulesCard from './RulesCard'
@@ -30,7 +30,7 @@ const Rules = () => {
       <StyledCardWrapper>
         <RulesCard title={t('Trade to increase your rank')}>
           <Text textAlign="center" fontSize="14px" color="textSubtle">
-            {t('Eligible pairs: BNB/BUSD, CAKE/BNB, ETH/BNB and BTCB/BNB')}
+            {t('Eligible pairs: BNB/BUSD, phoenix/BNB, ETH/BNB and BTCB/BNB')}
           </Text>
         </RulesCard>
         <RulesCard title={t('Play as a team')}>

@@ -11,7 +11,7 @@
     "browser": true,
     "jest": true
   },
-  "extends": "@pancakeswap/eslint-config-pancake",
+  "extends": "@panphoenixswap/eslint-config-panphoenix",
   "rules": {
     "no-console": ["warn", { "allow": ["info", "warn", "error"] }],
     "no-plusplus": 0,

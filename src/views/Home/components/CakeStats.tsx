@@ -1,13 +1,13 @@
 import React from 'react'
-import { Card, CardBody, Heading, Text } from '@pancakeswap/uikit'
+import { Card, CardBody, Heading, Text } from '@panphoenixswap/uikit'
 import styled from 'styled-components'
 import { getBalanceNumber } from 'utils/formatBalance'
 import { useTotalSupply, useBurnedBalance } from 'hooks/useTokenBalance'
 import { useTranslation } from 'contexts/Localization'
-import { getCakeAddress } from 'utils/addressHelpers'
+import { getphoenixAddress } from 'utils/addressHelpers'
 import CardValue from './CardValue'
 
-const StyledCakeStats = styled(Card)`
+const StyledphoenixStats = styled(Card)`
   margin-left: auto;
   margin-right: auto;
 `
@@ -20,33 +20,33 @@ const Row = styled.div`
   margin-bottom: 8px;
 `
 
-const CakeStats = () => {
+const phoenixStats = () => {
   const { t } = useTranslation()
   const totalSupply = useTotalSupply()
-  const burnedBalance = getBalanceNumber(useBurnedBalance(getCakeAddress()))
-  const cakeSupply = totalSupply ? getBalanceNumber(totalSupply) - burnedBalance : 0
+  const burnedBalance = getBalanceNumber(useBurnedBalance(getphoenixAddress()))
+  const phoenixSupply = totalSupply ? getBalanceNumber(totalSupply) - burnedBalance : 0
 
   return (
-    <StyledCakeStats>
+    <StyledphoenixStats>
       <CardBody>
         <Heading scale="xl" mb="24px">
-          {t('Cake Stats')}
+          {t('phoenix Stats')}
         </Heading>
         <Row>
-          <Text fontSize="14px">{t('Total CAKE Supply')}</Text>
-          {cakeSupply && <CardValue fontSize="14px" value={cakeSupply} />}
+          <Text fontSize="14px">{t('Total phoenix Supply')}</Text>
+          {phoenixSupply && <CardValue fontSize="14px" value={phoenixSupply} />}
         </Row>
         <Row>
-          <Text fontSize="14px">{t('Total CAKE Burned')}</Text>
+          <Text fontSize="14px">{t('Total phoenix Burned')}</Text>
           <CardValue fontSize="14px" decimals={0} value={burnedBalance} />
         </Row>
         <Row>
-          <Text fontSize="14px">{t('New CAKE/block')}</Text>
+          <Text fontSize="14px">{t('New phoenix/block')}</Text>
           <CardValue fontSize="14px" decimals={0} value={20} />
         </Row>
       </CardBody>
-    </StyledCakeStats>
+    </StyledphoenixStats>
   )
 }
 
-export default CakeStats
+export default phoenixStats

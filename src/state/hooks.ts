@@ -16,9 +16,9 @@ import {
   fetchFarmsPublicDataAsync,
   fetchPoolsPublicDataAsync,
   fetchPoolsUserDataAsync,
-  fetchCakeVaultPublicData,
-  fetchCakeVaultUserData,
-  fetchCakeVaultFees,
+  fetchphoenixVaultPublicData,
+  fetchphoenixVaultUserData,
+  fetchphoenixVaultFees,
   setBlock,
 } from './actions'
 import { State, Farm, Pool, ProfileState, TeamsState, AchievementState, FarmsState } from './types'
@@ -50,7 +50,7 @@ export const usePollFarmsData = (includeArchive = false) => {
 
 /**
  * Fetches the "core" farm data used globally
- * 251 = CAKE-BNB LP
+ * 251 = phoenix-BNB LP
  * 252 = BUSD-BNB LP
  */
 export const usePollCoreFarmData = () => {
@@ -178,48 +178,48 @@ export const usePoolFromPid = (sousId: number): Pool => {
   return transformPool(pool)
 }
 
-export const useFetchCakeVault = () => {
+export const useFetchphoenixVault = () => {
   const { account } = useWeb3React()
   const { fastRefresh } = useRefresh()
   const dispatch = useAppDispatch()
 
   useEffect(() => {
-    dispatch(fetchCakeVaultPublicData())
+    dispatch(fetchphoenixVaultPublicData())
   }, [dispatch, fastRefresh])
 
   useEffect(() => {
-    dispatch(fetchCakeVaultUserData({ account }))
+    dispatch(fetchphoenixVaultUserData({ account }))
   }, [dispatch, fastRefresh, account])
 
   useEffect(() => {
-    dispatch(fetchCakeVaultFees())
+    dispatch(fetchphoenixVaultFees())
   }, [dispatch])
 }
 
-export const useCakeVault = () => {
+export const usephoenixVault = () => {
   const {
     totalShares: totalSharesAsString,
     pricePerFullShare: pricePerFullShareAsString,
-    totalCakeInVault: totalCakeInVaultAsString,
-    estimatedCakeBountyReward: estimatedCakeBountyRewardAsString,
-    totalPendingCakeHarvest: totalPendingCakeHarvestAsString,
+    totalphoenixInVault: totalphoenixInVaultAsString,
+    estimatedphoenixBountyReward: estimatedphoenixBountyRewardAsString,
+    totalPendingphoenixHarvest: totalPendingphoenixHarvestAsString,
     fees: { performanceFee, callFee, withdrawalFee, withdrawalFeePeriod },
     userData: {
       isLoading,
       userShares: userSharesAsString,
-      cakeAtLastUserAction: cakeAtLastUserActionAsString,
+      phoenixAtLastUserAction: phoenixAtLastUserActionAsString,
       lastDepositedTime,
       lastUserActionTime,
     },
-  } = useSelector((state: State) => state.pools.cakeVault)
+  } = useSelector((state: State) => state.pools.phoenixVault)
 
-  const estimatedCakeBountyReward = useMemo(() => {
-    return new BigNumber(estimatedCakeBountyRewardAsString)
-  }, [estimatedCakeBountyRewardAsString])
+  const estimatedphoenixBountyReward = useMemo(() => {
+    return new BigNumber(estimatedphoenixBountyRewardAsString)
+  }, [estimatedphoenixBountyRewardAsString])
 
-  const totalPendingCakeHarvest = useMemo(() => {
-    return new BigNumber(totalPendingCakeHarvestAsString)
-  }, [totalPendingCakeHarvestAsString])
+  const totalPendingphoenixHarvest = useMemo(() => {
+    return new BigNumber(totalPendingphoenixHarvestAsString)
+  }, [totalPendingphoenixHarvestAsString])
 
   const totalShares = useMemo(() => {
     return new BigNumber(totalSharesAsString)
@@ -229,24 +229,24 @@ export const useCakeVault = () => {
     return new BigNumber(pricePerFullShareAsString)
   }, [pricePerFullShareAsString])
 
-  const totalCakeInVault = useMemo(() => {
-    return new BigNumber(totalCakeInVaultAsString)
-  }, [totalCakeInVaultAsString])
+  const totalphoenixInVault = useMemo(() => {
+    return new BigNumber(totalphoenixInVaultAsString)
+  }, [totalphoenixInVaultAsString])
 
   const userShares = useMemo(() => {
     return new BigNumber(userSharesAsString)
   }, [userSharesAsString])
 
-  const cakeAtLastUserAction = useMemo(() => {
-    return new BigNumber(cakeAtLastUserActionAsString)
-  }, [cakeAtLastUserActionAsString])
+  const phoenixAtLastUserAction = useMemo(() => {
+    return new BigNumber(phoenixAtLastUserActionAsString)
+  }, [phoenixAtLastUserActionAsString])
 
   return {
     totalShares,
     pricePerFullShare,
-    totalCakeInVault,
-    estimatedCakeBountyReward,
-    totalPendingCakeHarvest,
+    totalphoenixInVault,
+    estimatedphoenixBountyReward,
+    totalPendingphoenixHarvest,
     fees: {
       performanceFee,
       callFee,
@@ -256,7 +256,7 @@ export const useCakeVault = () => {
     userData: {
       isLoading,
       userShares,
-      cakeAtLastUserAction,
+      phoenixAtLastUserAction,
       lastDepositedTime,
       lastUserActionTime,
     },
@@ -326,9 +326,9 @@ export const usePriceBnbBusd = (): BigNumber => {
   return new BigNumber(bnbBusdFarm.quoteToken.busdPrice)
 }
 
-export const usePriceCakeBusd = (): BigNumber => {
-  const cakeBnbFarm = useFarmFromPid(251)
-  return new BigNumber(cakeBnbFarm.token.busdPrice)
+export const usePricephoenixBusd = (): BigNumber => {
+  const phoenixBnbFarm = useFarmFromPid(251)
+  return new BigNumber(phoenixBnbFarm.token.busdPrice)
 }
 
 // Block

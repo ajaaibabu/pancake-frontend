@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react'
 import styled from 'styled-components'
 import Split from 'split-grid'
-import { ArrowDownIcon, Button, ChartIcon } from '@pancakeswap/uikit'
+import { ArrowDownIcon, Button, ChartIcon } from '@panphoenixswap/uikit'
 import debounce from 'lodash/debounce'
 import delay from 'lodash/delay'
 import { useAppDispatch } from 'state'
@@ -28,7 +28,7 @@ const ExpandChartButton = styled(Button)`
   position: absolute;
   z-index: 50;
 
-  &:hover:not(:disabled):not(.pancake-button--disabled):not(.pancake-button--disabled):not(:active) {
+  &:hover:not(:disabled):not(.panphoenix-button--disabled):not(.panphoenix-button--disabled):not(:active) {
     background-color: ${({ theme }) => theme.card.background};
     opacity: 1;
   }

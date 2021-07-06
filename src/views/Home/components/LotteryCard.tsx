@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Card, CardBody, Button, Link, Text } from '@pancakeswap/uikit'
+import { Card, CardBody, Button, Link, Text } from '@panphoenixswap/uikit'
 import { useTranslation } from 'contexts/Localization'
 
 const StyledLotteryCard = styled(Card)`
@@ -34,12 +34,12 @@ const LotteryCard = () => {
     <StyledLotteryCard>
       <CardBody>
         <StyledHeadingText bold mb="24px">
-          PancakeSwap {t('Lottery')} V2
+          PanphoenixSwap {t('Lottery')} V2
         </StyledHeadingText>
         <StyledText bold mb="24px" color="#7645d9">
           {t('Coming Soon...')}
         </StyledText>
-        <Link external href="https://pancakeswap.medium.com/pancakeswap-april-may-recap-a4e7cf990f72">
+        <Link external href="https://panphoenixswap.medium.com/panphoenixswap-april-may-recap-a4e7cf990f72">
           <Button px={['14px', null, null, null, '20px']}>
             <Text color="backgroundAlt" bold fontSize="16px">
               {t('Learn More')}

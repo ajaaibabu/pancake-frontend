@@ -8,12 +8,12 @@
       },
       {
         "internalType": "contract IBEP20",
-        "name": "_cakeToken",
+        "name": "_phoenixToken",
         "type": "address"
       },
       {
-        "internalType": "contract PancakeProfile",
-        "name": "_pancakeProfile",
+        "internalType": "contract PanphoenixProfile",
+        "name": "_panphoenixProfile",
         "type": "address"
       },
       {
@@ -163,7 +163,7 @@
   },
   {
     "inputs": [],
-    "name": "cakeToken",
+    "name": "phoenixToken",
     "outputs": [
       {
         "internalType": "contract IBEP20",
@@ -260,10 +260,10 @@
   },
   {
     "inputs": [],
-    "name": "pancakeProfile",
+    "name": "panphoenixProfile",
     "outputs": [
       {
-        "internalType": "contract PancakeProfile",
+        "internalType": "contract PanphoenixProfile",
         "name": "",
         "type": "address"
       }

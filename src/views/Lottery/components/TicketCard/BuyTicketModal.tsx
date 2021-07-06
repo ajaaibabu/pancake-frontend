@@ -1,7 +1,7 @@
 import BigNumber from 'bignumber.js'
 import React, { useCallback, useMemo, useState } from 'react'
 import styled from 'styled-components'
-import { Button, Modal } from '@pancakeswap/uikit'
+import { Button, Modal } from '@panphoenixswap/uikit'
 import { getBalanceNumber, getFullDisplayBalance } from 'utils/formatBalance'
 import { ModalActions } from 'components/Modal'
 import { useMultiBuyLottery, useMaxNumber } from 'views/Lottery/hooks/useBuyLottery'
@@ -65,7 +65,7 @@ const BuyTicketModal: React.FC<BuyTicketModalProps> = ({ max, onDismiss }) => {
     }
   }, [maxTickets])
 
-  const cakeCosts = (amount: string): number => {
+  const phoenixCosts = (amount: string): number => {
     return +amount * LOTTERY_TICKET_PRICE
   }
   return (
@@ -76,16 +76,16 @@ const BuyTicketModal: React.FC<BuyTicketModalProps> = ({ max, onDismiss }) => {
         onChange={handleChange}
         max={fullBalance}
         symbol={t('Ticket').toUpperCase()}
-        availableSymbol="CAKE"
+        availableSymbol="phoenix"
       />
       <div>
-        <Tips>{t('1 Ticket = %lotteryPrice% CAKE', { lotteryPrice: LOTTERY_TICKET_PRICE })}</Tips>
+        <Tips>{t('1 Ticket = %lotteryPrice% phoenix', { lotteryPrice: LOTTERY_TICKET_PRICE })}</Tips>
       </div>
       <div>
         <Announce>
-          {t('Ticket purchases are final. Your CAKE cannot be returned to you after buying tickets.')}
+          {t('Ticket purchases are final. Your phoenix cannot be returned to you after buying tickets.')}
         </Announce>
-        <Final>{t('You will spend: %num% CAKE', { num: cakeCosts(val) })}</Final>
+        <Final>{t('You will spend: %num% phoenix', { num: phoenixCosts(val) })}</Final>
       </div>
       <ModalActions>
         <Button width="100%" variant="secondary" onClick={onDismiss}>

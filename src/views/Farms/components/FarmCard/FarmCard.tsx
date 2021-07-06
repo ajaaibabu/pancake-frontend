@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import BigNumber from 'bignumber.js'
 import styled, { keyframes } from 'styled-components'
-import { Flex, Text, Skeleton } from '@pancakeswap/uikit'
+import { Flex, Text, Skeleton } from '@panphoenixswap/uikit'
 import { Farm } from 'state/types'
 import { getBscScanAddressUrl } from 'utils/bscscan'
 import { useTranslation } from 'contexts/Localization'
@@ -73,11 +73,11 @@ interface FarmCardProps {
   farm: FarmWithStakedValue
   displayApr: string
   removed: boolean
-  cakePrice?: BigNumber
+  phoenixPrice?: BigNumber
   account?: string
 }
 
-const FarmCard: React.FC<FarmCardProps> = ({ farm, displayApr, removed, cakePrice, account }) => {
+const FarmCard: React.FC<FarmCardProps> = ({ farm, displayApr, removed, phoenixPrice, account }) => {
   const { t } = useTranslation()
 
   const [showExpandableSection, setShowExpandableSection] = useState(false)
@@ -87,8 +87,8 @@ const FarmCard: React.FC<FarmCardProps> = ({ farm, displayApr, removed, cakePric
       ? `$${farm.liquidity.toNumber().toLocaleString(undefined, { maximumFractionDigits: 0 })}`
       : ''
 
-  const lpLabel = farm.lpSymbol && farm.lpSymbol.toUpperCase().replace('PANCAKE', '')
-  const earnLabel = farm.dual ? farm.dual.earnLabel : t('CAKE + Fees')
+  const lpLabel = farm.lpSymbol && farm.lpSymbol.toUpperCase().replace('PANphoenix', '')
+  const earnLabel = farm.dual ? farm.dual.earnLabel : t('phoenix + Fees')
 
   const liquidityUrlPathParts = getLiquidityUrlPathParts({
     quoteTokenAddress: farm.quoteToken.address,
@@ -96,7 +96,7 @@ const FarmCard: React.FC<FarmCardProps> = ({ farm, displayApr, removed, cakePric
   })
   const addLiquidityUrl = `${BASE_ADD_LIQUIDITY_URL}/${liquidityUrlPathParts}`
   const lpAddress = farm.lpAddresses[process.env.REACT_APP_CHAIN_ID]
-  const isPromotedFarm = farm.token.symbol === 'CAKE'
+  const isPromotedFarm = farm.token.symbol === 'phoenix'
 
   return (
     <FCard isPromotedFarm={isPromotedFarm}>
@@ -117,7 +117,7 @@ const FarmCard: React.FC<FarmCardProps> = ({ farm, displayApr, removed, cakePric
                 <ApyButton
                   lpLabel={lpLabel}
                   addLiquidityUrl={addLiquidityUrl}
-                  cakePrice={cakePrice}
+                  phoenixPrice={phoenixPrice}
                   apr={farm.apr}
                   displayApr={displayApr}
                 />
@@ -143,7 +143,7 @@ const FarmCard: React.FC<FarmCardProps> = ({ farm, displayApr, removed, cakePric
         <DetailsSection
           removed={removed}
           bscScanAddress={getBscScanAddressUrl(farm.lpAddresses[process.env.REACT_APP_CHAIN_ID])}
-          infoAddress={`https://pancakeswap.info/pool/${lpAddress}`}
+          infoAddress={`https://panphoenixswap.info/pool/${lpAddress}`}
           totalValueFormatted={totalValueFormatted}
           lpLabel={lpLabel}
           addLiquidityUrl={addLiquidityUrl}

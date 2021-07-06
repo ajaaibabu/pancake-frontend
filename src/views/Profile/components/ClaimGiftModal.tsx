@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react'
-import { Modal, Text, InjectedModalProps, Button, AutoRenewIcon } from '@pancakeswap/uikit'
+import { Modal, Text, InjectedModalProps, Button, AutoRenewIcon } from '@panphoenixswap/uikit'
 import { useWeb3React } from '@web3-react/core'
 import useToast from 'hooks/useToast'
 import { useClaimRefundContract } from 'hooks/useContract'
@@ -42,7 +42,7 @@ const ClaimGift: React.FC<ClaimGiftProps> = ({ onSuccess, onDismiss }) => {
   const { toastSuccess, toastError } = useToast()
 
   const handleClick = async () => {
-    const tx = await claimRefundContract.getCakeBack()
+    const tx = await claimRefundContract.getphoenixBack()
     setIsConfirming(true)
     const receipt = await tx.wait()
     if (receipt.status) {
@@ -58,13 +58,13 @@ const ClaimGift: React.FC<ClaimGiftProps> = ({ onSuccess, onDismiss }) => {
   return (
     <Modal title={t('Claim your Gift!')} onDismiss={onDismiss}>
       <div style={{ maxWidth: '640px' }}>
-        <Text as="p">{t('Thank you for being a day-one user of Pancake Profiles!')}</Text>
+        <Text as="p">{t('Thank you for being a day-one user of Panphoenix Profiles!')}</Text>
         <Text as="p" mb="8px">
           {t(
             "If you haven't already noticed, we made a mistake and the starter bunny you chose got mixed up and changed into another bunny. Oops!",
           )}
         </Text>
-        <Text as="p">{t('To make it up to you, we’ll refund you the full 4 CAKE it cost to make your bunny.')}</Text>
+        <Text as="p">{t('To make it up to you, we’ll refund you the full 4 phoenix it cost to make your bunny.')}</Text>
         <Text as="p" mb="8px">
           {t('We’re also preparing an all-new collectible for you to claim (for free!) in the near future.')}
         </Text>
@@ -79,7 +79,7 @@ const ClaimGift: React.FC<ClaimGiftProps> = ({ onSuccess, onDismiss }) => {
           onClick={handleClick}
           disabled={!canClaim}
         >
-          {t('Claim Your CAKE')}
+          {t('Claim Your phoenix')}
         </Button>
       </div>
     </Modal>

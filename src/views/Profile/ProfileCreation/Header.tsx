@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import styled from 'styled-components'
-import { Breadcrumbs, Heading, Text } from '@pancakeswap/uikit'
+import { Breadcrumbs, Heading, Text } from '@panphoenixswap/uikit'
 import { useTranslation } from 'contexts/Localization'
 import { ProfileCreationContext } from './contexts/ProfileCreationProvider'
 
@@ -25,7 +25,7 @@ const Header: React.FC = () => {
         {t('Show off your stats and collectibles with your unique profile')}
       </Heading>
       <Text color="textSubtle" mb="24px">
-        {t('Total cost: 1.5 CAKE')}
+        {t('Total cost: 1.5 phoenix')}
       </Text>
       <Breadcrumbs>
         {steps.map((translationKey, index) => {

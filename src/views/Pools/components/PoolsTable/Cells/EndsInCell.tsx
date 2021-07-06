@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Flex, Link, Skeleton, Text, TimerIcon } from '@pancakeswap/uikit'
+import { Flex, Link, Skeleton, Text, TimerIcon } from '@panphoenixswap/uikit'
 import { getBscScanBlockCountdownUrl } from 'utils/bscscan'
 import { Pool } from 'state/types'
 import { useBlock } from 'state/hooks'
@@ -25,7 +25,7 @@ const EndsInCell: React.FC<FinishCellProps> = ({ pool }) => {
   const { shouldShowBlockCountdown, blocksUntilStart, blocksRemaining, hasPoolStarted, blocksToDisplay } =
     getPoolBlockInfo(pool, currentBlock)
 
-  const isCakePool = sousId === 0
+  const isphoenixPool = sousId === 0
 
   const renderBlocks = shouldShowBlockCountdown ? (
     <Flex alignItems="center">
@@ -53,7 +53,7 @@ const EndsInCell: React.FC<FinishCellProps> = ({ pool }) => {
   // Opted to go for this since we don't really need a separate publicDataLoaded flag
   // anywhere else
   const isLoadingPublicData = !totalStaked.gt(0) || !currentBlock || (!blocksRemaining && !blocksUntilStart)
-  const showLoading = isLoadingPublicData && !isCakePool && !isFinished
+  const showLoading = isLoadingPublicData && !isphoenixPool && !isFinished
   return (
     <StyledCell role="cell">
       <CellContent>

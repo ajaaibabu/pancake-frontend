@@ -5,7 +5,7 @@ import BigNumber from 'bignumber.js'
 import { useAppDispatch } from 'state'
 import { updateUserAllowance } from 'state/actions'
 import { useTranslation } from 'contexts/Localization'
-import { useCake, useSousChef, useCakeVaultContract } from 'hooks/useContract'
+import { usephoenix, useSousChef, usephoenixVaultContract } from 'hooks/useContract'
 import useToast from 'hooks/useToast'
 import useLastUpdated from 'hooks/useLastUpdated'
 
@@ -44,20 +44,20 @@ export const useApprovePool = (lpContract: Contract, sousId, earningTokenSymbol)
   return { handleApprove, requestedApproval }
 }
 
-// Approve CAKE auto pool
+// Approve phoenix auto pool
 export const useVaultApprove = (setLastUpdated: () => void) => {
   const [requestedApproval, setRequestedApproval] = useState(false)
   const { t } = useTranslation()
   const { toastSuccess, toastError } = useToast()
-  const cakeVaultContract = useCakeVaultContract()
-  const cakeContract = useCake()
+  const phoenixVaultContract = usephoenixVaultContract()
+  const phoenixContract = usephoenix()
 
   const handleApprove = async () => {
-    const tx = await cakeContract.approve(cakeVaultContract.address, ethers.constants.MaxUint256)
+    const tx = await phoenixContract.approve(phoenixVaultContract.address, ethers.constants.MaxUint256)
     setRequestedApproval(true)
     const receipt = await tx.wait()
     if (receipt.status) {
-      toastSuccess(t('Contract Enabled'), t('You can now stake in the %symbol% vault!', { symbol: 'CAKE' }))
+      toastSuccess(t('Contract Enabled'), t('You can now stake in the %symbol% vault!', { symbol: 'phoenix' }))
       setLastUpdated()
       setRequestedApproval(false)
     } else {
@@ -72,13 +72,13 @@ export const useVaultApprove = (setLastUpdated: () => void) => {
 export const useCheckVaultApprovalStatus = () => {
   const [isVaultApproved, setIsVaultApproved] = useState(false)
   const { account } = useWeb3React()
-  const cakeContract = useCake()
-  const cakeVaultContract = useCakeVaultContract()
+  const phoenixContract = usephoenix()
+  const phoenixVaultContract = usephoenixVaultContract()
   const { lastUpdated, setLastUpdated } = useLastUpdated()
   useEffect(() => {
     const checkApprovalStatus = async () => {
       try {
-        const response = await cakeContract.allowance(account, cakeVaultContract.address)
+        const response = await phoenixContract.allowance(account, phoenixVaultContract.address)
         const currentAllowance = new BigNumber(response.toString())
         setIsVaultApproved(currentAllowance.gt(0))
       } catch (error) {
@@ -87,7 +87,7 @@ export const useCheckVaultApprovalStatus = () => {
     }
 
     checkApprovalStatus()
-  }, [account, cakeContract, cakeVaultContract, lastUpdated])
+  }, [account, phoenixContract, phoenixVaultContract, lastUpdated])
 
   return { isVaultApproved, setLastUpdated }
 }

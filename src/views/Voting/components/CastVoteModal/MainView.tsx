@@ -8,7 +8,7 @@ import {
   Message as UIKitMessage,
   AutoRenewIcon,
   ChevronRightIcon,
-} from '@pancakeswap/uikit'
+} from '@panphoenixswap/uikit'
 import BigNumber from 'bignumber.js'
 import { useTranslation } from 'contexts/Localization'
 import TextEllipsis from '../TextEllipsis'

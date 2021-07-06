@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Heading } from '@pancakeswap/uikit'
+import { Heading } from '@panphoenixswap/uikit'
 import { useTranslation } from 'contexts/Localization'
 import Page from 'components/layout/Page'
 import NftList from './components/NftList'
@@ -18,7 +18,7 @@ const Collectibles = () => {
     <Page>
       <StyledHero>
         <Heading as="h1" scale="xxl" color="secondary">
-          {t('Pancake Collectibles')}
+          {t('Panphoenix Collectibles')}
         </Heading>
       </StyledHero>
       <NftList />

@@ -1,10 +1,10 @@
 import React, { useContext, useState } from 'react'
 import styled from 'styled-components'
-import { AutoRenewIcon, Button, Card, CardBody, Heading, Skeleton, Text } from '@pancakeswap/uikit'
+import { AutoRenewIcon, Button, Card, CardBody, Heading, Skeleton, Text } from '@panphoenixswap/uikit'
 import { useWeb3React } from '@web3-react/core'
 import { Link as RouterLink } from 'react-router-dom'
 import { getAddressByType } from 'utils/collectibles'
-import { getPancakeProfileAddress } from 'utils/addressHelpers'
+import { getPanphoenixProfileAddress } from 'utils/addressHelpers'
 import { getErc721Contract } from 'utils/contractHelpers'
 import { useTranslation } from 'contexts/Localization'
 import { useGetCollectibles } from 'state/hooks'
@@ -33,7 +33,7 @@ const ProfilePicture: React.FC = () => {
 
   const handleApprove = async () => {
     const contract = getErc721Contract(selectedNft.nftAddress, library.getSigner())
-    const tx = await contract.approve(getPancakeProfileAddress(), selectedNft.tokenId)
+    const tx = await contract.approve(getPanphoenixProfileAddress(), selectedNft.tokenId)
     setIsApproving(true)
     const receipt = await tx.wait()
     if (receipt.status) {
@@ -52,11 +52,11 @@ const ProfilePicture: React.FC = () => {
           {t('Oops!')}
         </Heading>
         <Text bold fontSize="20px" mb="24px">
-          {t('We couldn’t find any Pancake Collectibles in your wallet.')}
+          {t('We couldn’t find any Panphoenix Collectibles in your wallet.')}
         </Text>
         <Text as="p">
           {t(
-            'You need a Pancake Collectible to finish setting up your profile. If you sold or transferred your starter collectible to another wallet, you’ll need to get it back or acquire a new one somehow. You can’t make a new starter with this wallet address.',
+            'You need a Panphoenix Collectible to finish setting up your profile. If you sold or transferred your starter collectible to another wallet, you’ll need to get it back or acquire a new one somehow. You can’t make a new starter with this wallet address.',
           )}
         </Text>
       </>
@@ -80,7 +80,7 @@ const ProfilePicture: React.FC = () => {
             {t('Choose a profile picture from the eligible collectibles (NFT) in your wallet, shown below.')}
           </Text>
           <Text as="p" color="textSubtle" mb="24px">
-            {t('Only approved Pancake Collectibles can be used.')}
+            {t('Only approved Panphoenix Collectibles can be used.')}
             <Link to="/collectibles" style={{ marginLeft: '4px' }}>
               {t('See the list >')}
             </Link>

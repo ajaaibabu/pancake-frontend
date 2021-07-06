@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react'
-import { Button, Modal } from '@pancakeswap/uikit'
+import { Button, Modal } from '@panphoenixswap/uikit'
 import styled from 'styled-components'
 import { useWinningNumbers } from 'views/Lottery/hooks/useTickets'
 import { useTranslation } from 'contexts/Localization'

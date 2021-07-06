@@ -1,14 +1,14 @@
 import React, { useContext, useState } from 'react'
 import styled from 'styled-components'
 import { useWeb3React } from '@web3-react/core'
-import { Heading, Card, CardBody, CardFooter, Text, PancakeRoundIcon, Flex, Skeleton } from '@pancakeswap/uikit'
+import { Heading, Card, CardBody, CardFooter, Text, PanphoenixRoundIcon, Flex, Skeleton } from '@panphoenixswap/uikit'
 import { getBalanceNumber } from 'utils/formatBalance'
 import { useTranslation } from 'contexts/Localization'
 import { useTotalRewards } from 'views/Lottery/hooks/useTickets'
 import PastLotteryDataContext from 'contexts/PastLotteryDataContext'
 import ExpandableSectionButton from 'components/ExpandableSectionButton/ExpandableSectionButton'
 import { BigNumber } from 'bignumber.js'
-import { usePriceCakeBusd } from 'state/hooks'
+import { usePricephoenixBusd } from 'state/hooks'
 import PrizeGrid from '../PrizeGrid'
 import CardBusdValue from '../../../Home/components/CardBusdValue'
 
@@ -56,8 +56,8 @@ const TotalPrizesCard = () => {
   const { account } = useWeb3React()
   const [showFooter, setShowFooter] = useState(false)
   const lotteryPrizeAmount = +getBalanceNumber(useTotalRewards()).toFixed(0)
-  const cakePrice = usePriceCakeBusd()
-  const lotteryPrizeAmountBusd = new BigNumber(lotteryPrizeAmount).multipliedBy(cakePrice)
+  const phoenixPrice = usePricephoenixBusd()
+  const lotteryPrizeAmountBusd = new BigNumber(lotteryPrizeAmount).multipliedBy(phoenixPrice)
   const lotteryPrizeWithCommaSeparators = lotteryPrizeAmount.toLocaleString()
   const { currentLotteryNumber } = useContext(PastLotteryDataContext)
 
@@ -77,14 +77,14 @@ const TotalPrizesCard = () => {
         <CardHeading>
           <Left>
             <IconWrapper>
-              <PancakeRoundIcon />
+              <PanphoenixRoundIcon />
             </IconWrapper>
             <PrizeCountWrapper>
               <Text fontSize="14px" color="textSubtle">
                 {t('Total Pot:')}
               </Text>
-              <Heading scale="lg">{lotteryPrizeWithCommaSeparators} CAKE</Heading>
-              {cakePrice.gt(0) && <CardBusdValue value={lotteryPrizeAmountBusd.toNumber()} />}
+              <Heading scale="lg">{lotteryPrizeWithCommaSeparators} phoenix</Heading>
+              {phoenixPrice.gt(0) && <CardBusdValue value={lotteryPrizeAmountBusd.toNumber()} />}
             </PrizeCountWrapper>
           </Left>
           <Right>

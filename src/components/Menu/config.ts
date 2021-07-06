@@ -1,4 +1,4 @@
-import { MenuEntry } from '@pancakeswap/uikit'
+import { MenuEntry } from '@panphoenixswap/uikit'
 import { ContextApi } from 'contexts/Localization/types'
 
 const config: (t: ContextApi['t']) => MenuEntry[] = (t) => [
@@ -13,15 +13,15 @@ const config: (t: ContextApi['t']) => MenuEntry[] = (t) => [
     items: [
       {
         label: t('Exchange'),
-        href: 'https://exchange.pancakeswap.finance/#/swap',
+        href: 'https://exchange.panphoenixswap.finance/#/swap',
       },
       {
         label: t('Liquidity'),
-        href: 'https://exchange.pancakeswap.finance/#/pool',
+        href: 'https://exchange.panphoenixswap.finance/#/pool',
       },
       {
         label: t('LP Migration'),
-        href: 'https://v1exchange.pancakeswap.finance/#/migrate',
+        href: 'https://v1exchange.panphoenixswap.finance/#/migrate',
       },
     ],
   },
@@ -76,7 +76,7 @@ const config: (t: ContextApi['t']) => MenuEntry[] = (t) => [
   {
     label: t('Info'),
     icon: 'InfoIcon',
-    href: 'https://pancakeswap.info',
+    href: 'https://panphoenixswap.info',
     status: {
       text: t('New').toLocaleUpperCase(),
       color: 'success',
@@ -93,7 +93,7 @@ const config: (t: ContextApi['t']) => MenuEntry[] = (t) => [
     items: [
       {
         label: t('Contact'),
-        href: 'https://docs.pancakeswap.finance/contact-us',
+        href: 'https://docs.panphoenixswap.finance/contact-us',
       },
       {
         label: t('Voting'),
@@ -101,19 +101,19 @@ const config: (t: ContextApi['t']) => MenuEntry[] = (t) => [
       },
       {
         label: t('Github'),
-        href: 'https://github.com/pancakeswap',
+        href: 'https://github.com/panphoenixswap',
       },
       {
         label: t('Docs'),
-        href: 'https://docs.pancakeswap.finance',
+        href: 'https://docs.panphoenixswap.finance',
       },
       {
         label: t('Blog'),
-        href: 'https://pancakeswap.medium.com',
+        href: 'https://panphoenixswap.medium.com',
       },
       {
         label: t('Merch'),
-        href: 'https://pancakeswap.creator-spring.com/',
+        href: 'https://panphoenixswap.creator-spring.com/',
       },
     ],
   },

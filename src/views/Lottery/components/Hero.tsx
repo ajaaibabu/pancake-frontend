@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Heading, Text, LinkExternal } from '@pancakeswap/uikit'
+import { Heading, Text, LinkExternal } from '@panphoenixswap/uikit'
 import { useTranslation } from 'contexts/Localization'
 import Container from 'components/layout/Container'
 
@@ -89,7 +89,7 @@ const Hero = () => {
             bold
             mt={20}
             external
-            href="https://pancakeswap.medium.com/pancakeswap-april-may-recap-a4e7cf990f72"
+            href="https://panphoenixswap.medium.com/panphoenixswap-april-may-recap-a4e7cf990f72"
           >
             {t('Learn more')}
           </LinkExternal>

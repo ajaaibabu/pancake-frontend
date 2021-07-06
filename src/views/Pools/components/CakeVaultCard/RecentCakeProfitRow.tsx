@@ -1,25 +1,25 @@
 import React from 'react'
-import { Flex, Text } from '@pancakeswap/uikit'
+import { Flex, Text } from '@panphoenixswap/uikit'
 import { useWeb3React } from '@web3-react/core'
 import { useTranslation } from 'contexts/Localization'
-import { useCakeVault, usePriceCakeBusd } from 'state/hooks'
-import { getCakeVaultEarnings } from 'views/Pools/helpers'
-import RecentCakeProfitBalance from './RecentCakeProfitBalance'
+import { usephoenixVault, usePricephoenixBusd } from 'state/hooks'
+import { getphoenixVaultEarnings } from 'views/Pools/helpers'
+import RecentphoenixProfitBalance from './RecentphoenixProfitBalance'
 
-const RecentCakeProfitCountdownRow = () => {
+const RecentphoenixProfitCountdownRow = () => {
   const { t } = useTranslation()
   const { account } = useWeb3React()
   const {
     pricePerFullShare,
-    userData: { cakeAtLastUserAction, userShares, lastUserActionTime },
-  } = useCakeVault()
-  const cakePriceBusd = usePriceCakeBusd()
-  const { hasAutoEarnings, autoCakeToDisplay, autoUsdToDisplay } = getCakeVaultEarnings(
+    userData: { phoenixAtLastUserAction, userShares, lastUserActionTime },
+  } = usephoenixVault()
+  const phoenixPriceBusd = usePricephoenixBusd()
+  const { hasAutoEarnings, autophoenixToDisplay, autoUsdToDisplay } = getphoenixVaultEarnings(
     account,
-    cakeAtLastUserAction,
+    phoenixAtLastUserAction,
     userShares,
     pricePerFullShare,
-    cakePriceBusd.toNumber(),
+    phoenixPriceBusd.toNumber(),
   )
 
   const lastActionInMs = lastUserActionTime && parseInt(lastUserActionTime) * 1000
@@ -28,10 +28,10 @@ const RecentCakeProfitCountdownRow = () => {
 
   return (
     <Flex alignItems="center" justifyContent="space-between">
-      <Text fontSize="14px">{`${t('Recent CAKE profit')}:`}</Text>
+      <Text fontSize="14px">{`${t('Recent phoenix profit')}:`}</Text>
       {hasAutoEarnings && (
-        <RecentCakeProfitBalance
-          cakeToDisplay={autoCakeToDisplay}
+        <RecentphoenixProfitBalance
+          phoenixToDisplay={autophoenixToDisplay}
           dollarValueToDisplay={autoUsdToDisplay}
           dateStringToDisplay={dateStringToDisplay}
         />
@@ -40,4 +40,4 @@ const RecentCakeProfitCountdownRow = () => {
   )
 }
 
-export default RecentCakeProfitCountdownRow
+export default RecentphoenixProfitCountdownRow

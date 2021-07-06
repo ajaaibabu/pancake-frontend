@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Box, Flex, InjectedModalProps, Modal, Button, Spinner } from '@pancakeswap/uikit'
+import { Box, Flex, InjectedModalProps, Modal, Button, Spinner } from '@panphoenixswap/uikit'
 import { useTranslation } from 'contexts/Localization'
 import useTheme from 'hooks/useTheme'
 import useGetVotingPower from '../hooks/useGetVotingPower'
@@ -12,7 +12,7 @@ interface VoteDetailsModalProps extends InjectedModalProps {
 const VoteDetailsModal: React.FC<VoteDetailsModalProps> = ({ block, onDismiss }) => {
   const { t } = useTranslation()
   const [modalIsOpen, setModalIsOpen] = useState(true)
-  const { isLoading, total, cakeBalance, cakeVaultBalance, cakePoolBalance, poolsBalance, cakeBnbLpBalance } =
+  const { isLoading, total, phoenixBalance, phoenixVaultBalance, phoenixPoolBalance, poolsBalance, phoenixBnbLpBalance } =
     useGetVotingPower(block, modalIsOpen)
   const { theme } = useTheme()
 
@@ -32,11 +32,11 @@ const VoteDetailsModal: React.FC<VoteDetailsModalProps> = ({ block, onDismiss })
           <>
             <DetailsView
               total={total}
-              cakeBalance={cakeBalance}
-              cakeVaultBalance={cakeVaultBalance}
-              cakePoolBalance={cakePoolBalance}
+              phoenixBalance={phoenixBalance}
+              phoenixVaultBalance={phoenixVaultBalance}
+              phoenixPoolBalance={phoenixPoolBalance}
               poolsBalance={poolsBalance}
-              cakeBnbLpBalance={cakeBnbLpBalance}
+              phoenixBnbLpBalance={phoenixBnbLpBalance}
             />
             <Button variant="secondary" onClick={onDismiss} width="100%" mt="16px">
               {t('Close')}

@@ -23,7 +23,7 @@ export type IfoStatus = 'idle' | 'coming_soon' | 'live' | 'finished'
 interface IfoPoolInfo {
   saleAmount: string
   raiseAmount: string
-  cakeToBurn: string
+  phoenixToBurn: string
   distributionRatio: number // Range [0-1]
 }
 
@@ -102,7 +102,7 @@ export type NftSource = {
 }
 
 export enum NftType {
-  PANCAKE = 'pancake',
+  PANphoenix = 'panphoenix',
   MIXIE = 'mixie',
 }
 

@@ -3,28 +3,28 @@ import { Pool } from 'state/types'
 import { getRoi, tokenEarnedPerThousandDollarsCompounding } from 'utils/compoundApyHelpers'
 import { getBalanceNumber, getFullDisplayBalance, getDecimalAmount } from 'utils/formatBalance'
 
-export const convertSharesToCake = (
+export const convertSharesTophoenix = (
   shares: BigNumber,
-  cakePerFullShare: BigNumber,
+  phoenixPerFullShare: BigNumber,
   decimals = 18,
   decimalsToRound = 3,
 ) => {
-  const sharePriceNumber = getBalanceNumber(cakePerFullShare, decimals)
-  const amountInCake = new BigNumber(shares.multipliedBy(sharePriceNumber))
-  const cakeAsNumberBalance = getBalanceNumber(amountInCake, decimals)
-  const cakeAsBigNumber = getDecimalAmount(new BigNumber(cakeAsNumberBalance), decimals)
-  const cakeAsDisplayBalance = getFullDisplayBalance(amountInCake, decimals, decimalsToRound)
-  return { cakeAsNumberBalance, cakeAsBigNumber, cakeAsDisplayBalance }
+  const sharePriceNumber = getBalanceNumber(phoenixPerFullShare, decimals)
+  const amountInphoenix = new BigNumber(shares.multipliedBy(sharePriceNumber))
+  const phoenixAsNumberBalance = getBalanceNumber(amountInphoenix, decimals)
+  const phoenixAsBigNumber = getDecimalAmount(new BigNumber(phoenixAsNumberBalance), decimals)
+  const phoenixAsDisplayBalance = getFullDisplayBalance(amountInphoenix, decimals, decimalsToRound)
+  return { phoenixAsNumberBalance, phoenixAsBigNumber, phoenixAsDisplayBalance }
 }
 
-export const convertCakeToShares = (
-  cake: BigNumber,
-  cakePerFullShare: BigNumber,
+export const convertphoenixToShares = (
+  phoenix: BigNumber,
+  phoenixPerFullShare: BigNumber,
   decimals = 18,
   decimalsToRound = 3,
 ) => {
-  const sharePriceNumber = getBalanceNumber(cakePerFullShare, decimals)
-  const amountInShares = new BigNumber(cake.dividedBy(sharePriceNumber))
+  const sharePriceNumber = getBalanceNumber(phoenixPerFullShare, decimals)
+  const amountInShares = new BigNumber(phoenix.dividedBy(sharePriceNumber))
   const sharesAsNumberBalance = getBalanceNumber(amountInShares, decimals)
   const sharesAsBigNumber = getDecimalAmount(new BigNumber(sharesAsNumberBalance), decimals)
   const sharesAsDisplayBalance = getFullDisplayBalance(amountInShares, decimals, decimalsToRound)
@@ -62,22 +62,22 @@ export const getAprData = (pool: Pool, performanceFee: number) => {
   return { apr, isHighValueToken, roundingDecimals, compoundFrequency }
 }
 
-export const getCakeVaultEarnings = (
+export const getphoenixVaultEarnings = (
   account: string,
-  cakeAtLastUserAction: BigNumber,
+  phoenixAtLastUserAction: BigNumber,
   userShares: BigNumber,
   pricePerFullShare: BigNumber,
   earningTokenPrice: number,
 ) => {
   const hasAutoEarnings =
-    account && cakeAtLastUserAction && cakeAtLastUserAction.gt(0) && userShares && userShares.gt(0)
-  const { cakeAsBigNumber } = convertSharesToCake(userShares, pricePerFullShare)
-  const autoCakeProfit = cakeAsBigNumber.minus(cakeAtLastUserAction)
-  const autoCakeToDisplay = autoCakeProfit.gte(0) ? getBalanceNumber(autoCakeProfit, 18) : 0
+    account && phoenixAtLastUserAction && phoenixAtLastUserAction.gt(0) && userShares && userShares.gt(0)
+  const { phoenixAsBigNumber } = convertSharesTophoenix(userShares, pricePerFullShare)
+  const autophoenixProfit = phoenixAsBigNumber.minus(phoenixAtLastUserAction)
+  const autophoenixToDisplay = autophoenixProfit.gte(0) ? getBalanceNumber(autophoenixProfit, 18) : 0
 
-  const autoUsdProfit = autoCakeProfit.times(earningTokenPrice)
+  const autoUsdProfit = autophoenixProfit.times(earningTokenPrice)
   const autoUsdToDisplay = autoUsdProfit.gte(0) ? getBalanceNumber(autoUsdProfit, 18) : 0
-  return { hasAutoEarnings, autoCakeToDisplay, autoUsdToDisplay }
+  return { hasAutoEarnings, autophoenixToDisplay, autoUsdToDisplay }
 }
 
 export const getPoolBlockInfo = (pool: Pool, currentBlock: number) => {

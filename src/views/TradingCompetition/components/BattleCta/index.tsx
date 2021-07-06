@@ -10,7 +10,7 @@ import {
   CheckmarkCircleIcon,
   useWalletModal,
   useModal,
-} from '@pancakeswap/uikit'
+} from '@panphoenixswap/uikit'
 import useAuth from 'hooks/useAuth'
 import { useTranslation } from 'contexts/Localization'
 import { FINISHED, OVER } from 'config/constants/trading-competition/easterPhases'
@@ -162,7 +162,7 @@ const BattleCta: React.FC<CompetitionProps> = ({
     }
     // Registered and competition is live
     if (hasRegistered && isCompetitionLive) {
-      window.location.href = 'https://exchange.pancakeswap.finance/#/swap'
+      window.location.href = 'https://exchange.panphoenixswap.finance/#/swap'
     }
     // Registered and competition has finished
     if (hasRegistered && hasCompetitionEnded) {

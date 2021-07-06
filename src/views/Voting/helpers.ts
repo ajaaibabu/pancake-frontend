@@ -1,10 +1,10 @@
 import BigNumber from 'bignumber.js'
-import { getCakeAddress } from 'utils/addressHelpers'
+import { getphoenixAddress } from 'utils/addressHelpers'
 import { SNAPSHOT_HUB_API, SNAPSHOT_VOTING_API } from 'config/constants/endpoints'
 import { BIG_ZERO } from 'utils/bigNumber'
 import { Proposal, ProposalState, ProposalType, Vote } from 'state/types'
 import { simpleRpcProvider } from 'utils/providers'
-import { ADMIN_ADDRESS, PANCAKE_SPACE, SNAPSHOT_VERSION } from './config'
+import { ADMIN_ADDRESS, PANphoenix_SPACE, SNAPSHOT_VERSION } from './config'
 
 export const isCoreProposal = (proposal: Proposal) => {
   return proposal.author.toLowerCase() === ADMIN_ADDRESS.toLowerCase()
@@ -39,7 +39,7 @@ export const generateMetaData = () => {
   return {
     plugins: {},
     network: 56,
-    strategies: [{ name: 'cake', params: { symbol: 'CAKE', address: getCakeAddress(), decimals: 18 } }],
+    strategies: [{ name: 'phoenix', params: { symbol: 'phoenix', address: getphoenixAddress(), decimals: 18 } }],
   }
 }
 
@@ -50,7 +50,7 @@ export const generatePayloadData = () => {
   return {
     version: SNAPSHOT_VERSION,
     timestamp: (Date.now() / 1e3).toFixed(),
-    space: PANCAKE_SPACE,
+    space: PANphoenix_SPACE,
   }
 }
 

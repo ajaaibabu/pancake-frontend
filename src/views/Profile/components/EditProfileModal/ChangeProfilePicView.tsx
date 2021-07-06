@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Button, InjectedModalProps, Skeleton, Text } from '@pancakeswap/uikit'
+import { Button, InjectedModalProps, Skeleton, Text } from '@panphoenixswap/uikit'
 import { useWeb3React } from '@web3-react/core'
 import { useAppDispatch } from 'state'
 import { useGetCollectibles, useProfile } from 'state/hooks'
@@ -10,7 +10,7 @@ import { getAddressByType } from 'utils/collectibles'
 import useApproveConfirmTransaction from 'hooks/useApproveConfirmTransaction'
 import { getErc721Contract } from 'utils/contractHelpers'
 import { useProfile as useProfileContract } from 'hooks/useContract'
-import { getPancakeProfileAddress } from 'utils/addressHelpers'
+import { getPanphoenixProfileAddress } from 'utils/addressHelpers'
 import SelectionCard from '../SelectionCard'
 import ApproveConfirmButtons from '../ApproveConfirmButtons'
 
@@ -32,7 +32,7 @@ const ChangeProfilePicPage: React.FC<ChangeProfilePicPageProps> = ({ onDismiss }
     useApproveConfirmTransaction({
       onApprove: () => {
         const contract = getErc721Contract(selectedNft.nftAddress, library.getSigner())
-        return contract.approve(getPancakeProfileAddress(), selectedNft.tokenId)
+        return contract.approve(getPanphoenixProfileAddress(), selectedNft.tokenId)
       },
       onConfirm: () => {
         if (!profile.isActive) {
@@ -88,7 +88,7 @@ const ChangeProfilePicPage: React.FC<ChangeProfilePicPageProps> = ({ onDismiss }
             {t('Sorry! You don’t have any eligible Collectibles in your wallet to use!')}
           </Text>
           <Text as="p" color="textSubtle" mb="24px">
-            {t('Make sure you have a Pancake Collectible in your wallet and try again!')}
+            {t('Make sure you have a Panphoenix Collectible in your wallet and try again!')}
           </Text>
         </>
       )}

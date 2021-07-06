@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Card, CardBody, CardHeader, Heading, Text, Flex } from '@pancakeswap/uikit'
+import { Card, CardBody, CardHeader, Heading, Text, Flex } from '@panphoenixswap/uikit'
 import { useTranslation } from 'contexts/Localization'
 import FoldableText from 'components/FoldableText'
 
@@ -36,7 +36,7 @@ const FAQ = () => {
           <FoldableText title={t('Eligible trading pairs')} mt="24px">
             <Text fontSize="14px" color="textSubtle">
               {t(
-                'Only trades on BNB/BUSD, CAKE/BNB, ETH/BNB and BTCB/BNB pairs will be included in volume calculations.',
+                'Only trades on BNB/BUSD, phoenix/BNB, ETH/BNB and BTCB/BNB pairs will be included in volume calculations.',
               )}
             </Text>
           </FoldableText>
@@ -58,13 +58,13 @@ const FAQ = () => {
             <Text fontSize="14px" color="textSubtle">
               -{' '}
               {t(
-                'Prizes to be distributed in CAKE and shared by all members of each respective tier as per the Prizes section above.',
+                'Prizes to be distributed in phoenix and shared by all members of each respective tier as per the Prizes section above.',
               )}
             </Text>
             <Text fontSize="14px" color="textSubtle">
               -{' '}
               {t(
-                'CAKE prizes will be distributed as per the CAKE/BUSD price on the day of distribution. Every eligible participant will win prizes at the end of the competition.',
+                'phoenix prizes will be distributed as per the phoenix/BUSD price on the day of distribution. Every eligible participant will win prizes at the end of the competition.',
               )}
             </Text>
             <Text fontSize="14px" color="textSubtle">
@@ -75,13 +75,13 @@ const FAQ = () => {
             <Text fontSize="14px" color="textSubtle">
               -{' '}
               {t(
-                'In the event of a disagreement concerning the final winning team or rank, PancakeSwap will have the final say.',
+                'In the event of a disagreement concerning the final winning team or rank, PanphoenixSwap will have the final say.',
               )}
             </Text>
             <Text fontSize="14px" color="textSubtle">
               -{' '}
               {t(
-                'PancakeSwap can and will disqualify any team or specific members that are proven to have taken malicious action or attempt to “cheat” in any way.',
+                'PanphoenixSwap can and will disqualify any team or specific members that are proven to have taken malicious action or attempt to “cheat” in any way.',
               )}
             </Text>
           </FoldableText>

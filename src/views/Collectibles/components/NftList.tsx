@@ -8,7 +8,7 @@ import { useGetCollectibles } from 'state/hooks'
 import NftCard from './NftCard'
 import NftGrid from './NftGrid'
 import EasterNftCard from './NftCard/EasterNftCard'
-import BunnySpecialCakeVaultCard from './NftCard/BunnySpecialCakeVaultCard'
+import BunnySpecialphoenixVaultCard from './NftCard/BunnySpecialphoenixVaultCard'
 import BunnySpecialPredictionCard from './NftCard/BunnySpeciaPredictionCard'
 
 /**
@@ -19,8 +19,8 @@ import BunnySpecialPredictionCard from './NftCard/BunnySpeciaPredictionCard'
 const nftComponents = {
   'easter-storm': EasterNftCard,
   'easter-flipper': EasterNftCard,
-  'easter-caker': EasterNftCard,
-  'syrup-soak': BunnySpecialCakeVaultCard,
+  'easter-phoenixr': EasterNftCard,
+  'syrup-soak': BunnySpecialphoenixVaultCard,
   claire: BunnySpecialPredictionCard,
 }
 

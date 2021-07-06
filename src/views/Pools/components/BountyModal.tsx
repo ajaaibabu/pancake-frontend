@@ -3,15 +3,15 @@ import BigNumber from 'bignumber.js'
 import { useWeb3React } from '@web3-react/core'
 import { DEFAULT_GAS_LIMIT } from 'config'
 import styled from 'styled-components'
-import { Modal, Text, Flex, Button, HelpIcon, AutoRenewIcon, useTooltip } from '@pancakeswap/uikit'
+import { Modal, Text, Flex, Button, HelpIcon, AutoRenewIcon, useTooltip } from '@panphoenixswap/uikit'
 import { getBalanceNumber } from 'utils/formatBalance'
-import { useCakeVaultContract } from 'hooks/useContract'
+import { usephoenixVaultContract } from 'hooks/useContract'
 import useTheme from 'hooks/useTheme'
 import useToast from 'hooks/useToast'
 import { useTranslation } from 'contexts/Localization'
 import UnlockButton from 'components/UnlockButton'
 import Balance from 'components/Balance'
-import { useCakeVault, usePriceCakeBusd } from 'state/hooks'
+import { usephoenixVault, usePricephoenixBusd } from 'state/hooks'
 
 interface BountyModalProps {
   onDismiss?: () => void
@@ -30,25 +30,25 @@ const BountyModal: React.FC<BountyModalProps> = ({ onDismiss, TooltipComponent }
   const { account } = useWeb3React()
   const { theme } = useTheme()
   const { toastError, toastSuccess } = useToast()
-  const cakeVaultContract = useCakeVaultContract()
+  const phoenixVaultContract = usephoenixVaultContract()
   const [pendingTx, setPendingTx] = useState(false)
   const {
-    estimatedCakeBountyReward,
-    totalPendingCakeHarvest,
+    estimatedphoenixBountyReward,
+    totalPendingphoenixHarvest,
     fees: { callFee },
-  } = useCakeVault()
-  const cakePriceBusd = usePriceCakeBusd()
+  } = usephoenixVault()
+  const phoenixPriceBusd = usePricephoenixBusd()
   const callFeeAsDecimal = callFee / 100
-  const totalYieldToDisplay = getBalanceNumber(totalPendingCakeHarvest, 18)
+  const totalYieldToDisplay = getBalanceNumber(totalPendingphoenixHarvest, 18)
 
   const estimatedDollarBountyReward = useMemo(() => {
-    return new BigNumber(estimatedCakeBountyReward).multipliedBy(cakePriceBusd)
-  }, [cakePriceBusd, estimatedCakeBountyReward])
+    return new BigNumber(estimatedphoenixBountyReward).multipliedBy(phoenixPriceBusd)
+  }, [phoenixPriceBusd, estimatedphoenixBountyReward])
 
   const hasFetchedDollarBounty = estimatedDollarBountyReward.gte(0)
-  const hasFetchedCakeBounty = estimatedCakeBountyReward ? estimatedCakeBountyReward.gte(0) : false
+  const hasFetchedphoenixBounty = estimatedphoenixBountyReward ? estimatedphoenixBountyReward.gte(0) : false
   const dollarBountyToDisplay = hasFetchedDollarBounty ? getBalanceNumber(estimatedDollarBountyReward, 18) : 0
-  const cakeBountyToDisplay = hasFetchedCakeBounty ? getBalanceNumber(estimatedCakeBountyReward, 18) : 0
+  const phoenixBountyToDisplay = hasFetchedphoenixBounty ? getBalanceNumber(estimatedphoenixBountyReward, 18) : 0
 
   const { targetRef, tooltip, tooltipVisible } = useTooltip(<TooltipComponent fee={callFee} />, {
     placement: 'bottom',
@@ -56,11 +56,11 @@ const BountyModal: React.FC<BountyModalProps> = ({ onDismiss, TooltipComponent }
   })
 
   const handleConfirmClick = async () => {
-    const tx = await cakeVaultContract.harvest({ gasLimit: DEFAULT_GAS_LIMIT })
+    const tx = await phoenixVaultContract.harvest({ gasLimit: DEFAULT_GAS_LIMIT })
     setPendingTx(true)
     const receipt = await tx.wait()
     if (receipt.status) {
-      toastSuccess(t('Bounty collected!'), t('CAKE bounty has been sent to your wallet.'))
+      toastSuccess(t('Bounty collected!'), t('phoenix bounty has been sent to your wallet.'))
       setPendingTx(false)
       onDismiss()
     } else {
@@ -79,7 +79,7 @@ const BountyModal: React.FC<BountyModalProps> = ({ onDismiss, TooltipComponent }
       <Flex alignItems="flex-start" justifyContent="space-between">
         <Text>{t('You’ll claim')}</Text>
         <Flex flexDirection="column">
-          <Balance bold value={cakeBountyToDisplay} decimals={7} unit=" CAKE" />
+          <Balance bold value={phoenixBountyToDisplay} decimals={7} unit=" phoenix" />
           <Text fontSize="12px" color="textSubtle">
             <Balance
               fontSize="12px"
@@ -97,7 +97,7 @@ const BountyModal: React.FC<BountyModalProps> = ({ onDismiss, TooltipComponent }
         <Text fontSize="14px" color="textSubtle">
           {t('Pool total pending yield')}
         </Text>
-        <Balance color="textSubtle" value={totalYieldToDisplay} unit=" CAKE" />
+        <Balance color="textSubtle" value={totalYieldToDisplay} unit=" phoenix" />
       </Flex>
       <Flex alignItems="center" justifyContent="space-between" mb="24px">
         <Text fontSize="14px" color="textSubtle">
@@ -110,7 +110,7 @@ const BountyModal: React.FC<BountyModalProps> = ({ onDismiss, TooltipComponent }
       {account ? (
         <Button
           isLoading={pendingTx}
-          disabled={!dollarBountyToDisplay || !cakeBountyToDisplay || !callFee}
+          disabled={!dollarBountyToDisplay || !phoenixBountyToDisplay || !callFee}
           endIcon={pendingTx ? <AutoRenewIcon spin color="currentColor" /> : null}
           onClick={handleConfirmClick}
           mb="28px"

@@ -1,11 +1,11 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Button, useModal } from '@pancakeswap/uikit'
+import { Button, useModal } from '@panphoenixswap/uikit'
 import { useTranslation } from 'contexts/Localization'
 import useGetLotteryHasDrawn from 'views/Lottery/hooks/useGetLotteryHasDrawn'
 import useTickets from 'views/Lottery/hooks/useTickets'
 import useTokenBalance from 'hooks/useTokenBalance'
-import { getCakeAddress } from 'utils/addressHelpers'
+import { getphoenixAddress } from 'utils/addressHelpers'
 import BuyTicketModal from './BuyTicketModal'
 import MyTicketsModal from './UserTicketsModal'
 import useAllowance from '../../hooks/useAllowance'
@@ -26,12 +26,12 @@ const TicketCard: React.FC = () => {
   const { t } = useTranslation()
   const allowance = useAllowance()
   const lotteryHasDrawn = useGetLotteryHasDrawn()
-  const { balance: cakeBalance } = useTokenBalance(getCakeAddress())
+  const { balance: phoenixBalance } = useTokenBalance(getphoenixAddress())
   const tickets = useTickets()
   const ticketsLength = tickets.length
   const [onPresentMyTickets] = useModal(<MyTicketsModal myTicketNumbers={tickets} from="buy" />)
   const [onPresentApprove] = useModal(<PurchaseWarningModal />)
-  const [onPresentBuy] = useModal(<BuyTicketModal max={cakeBalance} />)
+  const [onPresentBuy] = useModal(<BuyTicketModal max={phoenixBalance} />)
   const { handleApprove, requestedApproval } = useApproval(onPresentApprove)
 
   const renderLotteryTicketButtons = () => {
@@ -42,7 +42,7 @@ const TicketCard: React.FC = () => {
             {t('View your tickets')}
           </Button>
           <Button width="100%" disabled={requestedApproval} onClick={handleApprove}>
-            {t('Approve CAKE')}
+            {t('Approve phoenix')}
           </Button>
         </>
       )

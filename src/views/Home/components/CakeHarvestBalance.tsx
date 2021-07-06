@@ -1,10 +1,10 @@
 import React from 'react'
-import { Text } from '@pancakeswap/uikit'
+import { Text } from '@panphoenixswap/uikit'
 import { useWeb3React } from '@web3-react/core'
 import BigNumber from 'bignumber.js'
 import { useTranslation } from 'contexts/Localization'
 import { FarmWithBalance } from 'views/Home/hooks/useFarmsWithBalance'
-import { usePriceCakeBusd } from 'state/hooks'
+import { usePricephoenixBusd } from 'state/hooks'
 import styled from 'styled-components'
 import { DEFAULT_TOKEN_DECIMAL } from 'config'
 import CardValue from './CardValue'
@@ -14,11 +14,11 @@ const Block = styled.div`
   margin-bottom: 24px;
 `
 
-interface CakeHarvestBalanceProps {
+interface phoenixHarvestBalanceProps {
   farmsWithBalance: FarmWithBalance[]
 }
 
-const CakeHarvestBalance: React.FC<CakeHarvestBalanceProps> = ({ farmsWithBalance }) => {
+const phoenixHarvestBalance: React.FC<phoenixHarvestBalanceProps> = ({ farmsWithBalance }) => {
   const { t } = useTranslation()
   const { account } = useWeb3React()
   const earningsSum = farmsWithBalance.reduce((accum, earning) => {
@@ -28,8 +28,8 @@ const CakeHarvestBalance: React.FC<CakeHarvestBalanceProps> = ({ farmsWithBalanc
     }
     return accum + earningNumber.div(DEFAULT_TOKEN_DECIMAL).toNumber()
   }, 0)
-  const cakePriceBusd = usePriceCakeBusd()
-  const earningsBusd = new BigNumber(earningsSum).multipliedBy(cakePriceBusd).toNumber()
+  const phoenixPriceBusd = usePricephoenixBusd()
+  const earningsBusd = new BigNumber(earningsSum).multipliedBy(phoenixPriceBusd).toNumber()
 
   if (!account) {
     return (
@@ -42,9 +42,9 @@ const CakeHarvestBalance: React.FC<CakeHarvestBalanceProps> = ({ farmsWithBalanc
   return (
     <Block>
       <CardValue value={earningsSum} lineHeight="1.5" />
-      {cakePriceBusd.gt(0) && <CardBusdValue value={earningsBusd} />}
+      {phoenixPriceBusd.gt(0) && <CardBusdValue value={earningsBusd} />}
     </Block>
   )
 }
 
-export default CakeHarvestBalance
+export default phoenixHarvestBalance

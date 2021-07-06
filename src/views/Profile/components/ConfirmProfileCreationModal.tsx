@@ -1,9 +1,9 @@
 import React from 'react'
-import { Modal, Flex, Text } from '@pancakeswap/uikit'
+import { Modal, Flex, Text } from '@panphoenixswap/uikit'
 import { useAppDispatch } from 'state'
 import BigNumber from 'bignumber.js'
 import { useTranslation } from 'contexts/Localization'
-import { useCake, useProfile } from 'hooks/useContract'
+import { usephoenix, useProfile } from 'hooks/useContract'
 import useApproveConfirmTransaction from 'hooks/useApproveConfirmTransaction'
 import { fetchProfile } from 'state/profile'
 import useToast from 'hooks/useToast'
@@ -16,7 +16,7 @@ interface Props {
   selectedNft: State['selectedNft']
   account: string
   teamId: number
-  minimumCakeRequired: BigNumber
+  minimumphoenixRequired: BigNumber
   allowance: BigNumber
   onDismiss?: () => void
 }
@@ -25,7 +25,7 @@ const ConfirmProfileCreationModal: React.FC<Props> = ({
   account,
   teamId,
   selectedNft,
-  minimumCakeRequired,
+  minimumphoenixRequired,
   allowance,
   onDismiss,
 }) => {
@@ -33,21 +33,21 @@ const ConfirmProfileCreationModal: React.FC<Props> = ({
   const profileContract = useProfile()
   const dispatch = useAppDispatch()
   const { toastSuccess } = useToast()
-  const cakeContract = useCake()
+  const phoenixContract = usephoenix()
 
   const { isApproving, isApproved, isConfirmed, isConfirming, handleApprove, handleConfirm } =
     useApproveConfirmTransaction({
       onRequiresApproval: async () => {
         try {
-          const response = await cakeContract.allowance(account, profileContract.address)
+          const response = await phoenixContract.allowance(account, profileContract.address)
           const currentAllowance = new BigNumber(response.toString())
-          return currentAllowance.gte(minimumCakeRequired)
+          return currentAllowance.gte(minimumphoenixRequired)
         } catch (error) {
           return false
         }
       },
       onApprove: () => {
-        return cakeContract.approve(profileContract.address, allowance.toJSON())
+        return phoenixContract.approve(profileContract.address, allowance.toJSON())
       },
       onConfirm: () => {
         return profileContract.createProfile(teamId, selectedNft.nftAddress, selectedNft.tokenId)
@@ -66,7 +66,7 @@ const ConfirmProfileCreationModal: React.FC<Props> = ({
       </Text>
       <Flex justifyContent="space-between" mb="16px">
         <Text>{t('Cost')}</Text>
-        <Text>{t('%num% CAKE', { num: REGISTER_COST })}</Text>
+        <Text>{t('%num% phoenix', { num: REGISTER_COST })}</Text>
       </Flex>
       <ApproveConfirmButtons
         isApproveDisabled={isConfirmed || isConfirming || isApproved}

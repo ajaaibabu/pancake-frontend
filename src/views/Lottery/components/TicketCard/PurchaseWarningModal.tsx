@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, Modal } from '@pancakeswap/uikit'
+import { Button, Modal } from '@panphoenixswap/uikit'
 import { ModalActions } from 'components/Modal'
 import styled from 'styled-components'
 import { useTranslation } from 'contexts/Localization'
@@ -12,7 +12,7 @@ const WarningModal: React.FC<{ onDismiss?: () => void }> = ({ onDismiss }) => {
       <TicketsList>
         {t('Lottery ticket purchases are final.')}
         <br />
-        {t('Your CAKE will not be returned to you after you spend it to buy tickets.')}
+        {t('Your phoenix will not be returned to you after you spend it to buy tickets.')}
         <br />
         {t('Tickets are only valid for one lottery draw, and will be burned after the draw.')}
         <br />

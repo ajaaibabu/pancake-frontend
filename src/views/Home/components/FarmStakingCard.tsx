@@ -1,6 +1,6 @@
 import React, { useState, useCallback } from 'react'
 import styled from 'styled-components'
-import { Heading, Card, CardBody, Button } from '@pancakeswap/uikit'
+import { Heading, Card, CardBody, Button } from '@panphoenixswap/uikit'
 import { harvestFarm } from 'utils/calls'
 import { useWeb3React } from '@web3-react/core'
 import { useTranslation } from 'contexts/Localization'
@@ -8,11 +8,11 @@ import useFarmsWithBalance from 'views/Home/hooks/useFarmsWithBalance'
 import { useMasterchef } from 'hooks/useContract'
 import useToast from 'hooks/useToast'
 import UnlockButton from 'components/UnlockButton'
-import CakeHarvestBalance from './CakeHarvestBalance'
-import CakeWalletBalance from './CakeWalletBalance'
+import phoenixHarvestBalance from './phoenixHarvestBalance'
+import phoenixWalletBalance from './phoenixWalletBalance'
 
 const StyledFarmStakingCard = styled(Card)`
-  background-image: url('/images/cake-bg.svg');
+  background-image: url('/images/phoenix-bg.svg');
   background-repeat: no-repeat;
   background-position: top right;
   min-height: 376px;
@@ -64,14 +64,14 @@ const FarmedStakingCard = () => {
         <Heading scale="xl" mb="24px">
           {t('Farms & Staking')}
         </Heading>
-        <CardImage src="/images/cake.svg" alt="cake logo" width={64} height={64} />
+        <CardImage src="/images/phoenix.svg" alt="phoenix logo" width={64} height={64} />
         <Block>
-          <Label>{t('CAKE to Harvest')}:</Label>
-          <CakeHarvestBalance farmsWithBalance={balancesWithValue} />
+          <Label>{t('phoenix to Harvest')}:</Label>
+          <phoenixHarvestBalance farmsWithBalance={balancesWithValue} />
         </Block>
         <Block>
-          <Label>{t('CAKE in Wallet')}:</Label>
-          <CakeWalletBalance />
+          <Label>{t('phoenix in Wallet')}:</Label>
+          <phoenixWalletBalance />
         </Block>
         <Actions>
           {account ? (
@@ -82,7 +82,7 @@ const FarmedStakingCard = () => {
               width="100%"
             >
               {pendingTx
-                ? t('Collecting CAKE')
+                ? t('Collecting phoenix')
                 : t('Harvest all (%count%)', {
                     count: balancesWithValue.length,
                   })}

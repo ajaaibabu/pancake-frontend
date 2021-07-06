@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Box, Modal } from '@pancakeswap/uikit'
+import { Box, Modal } from '@panphoenixswap/uikit'
 import { useWeb3React } from '@web3-react/core'
 import { useTranslation } from 'contexts/Localization'
 import { SnapshotCommand } from 'state/types'
@@ -25,11 +25,11 @@ const CastVoteModal: React.FC<CastVoteModalProps> = ({ onSuccess, proposalId, vo
   const {
     isLoading,
     total,
-    cakeBalance,
-    cakeVaultBalance,
-    cakePoolBalance,
+    phoenixBalance,
+    phoenixVaultBalance,
+    phoenixPoolBalance,
     poolsBalance,
-    cakeBnbLpBalance,
+    phoenixBnbLpBalance,
     verificationHash,
   } = useGetVotingPower(block, modalIsOpen)
 
@@ -103,11 +103,11 @@ const CastVoteModal: React.FC<CastVoteModalProps> = ({ onSuccess, proposalId, vo
         {view === ConfirmVoteView.DETAILS && (
           <DetailsView
             total={total}
-            cakeBalance={cakeBalance}
-            cakeVaultBalance={cakeVaultBalance}
-            cakePoolBalance={cakePoolBalance}
+            phoenixBalance={phoenixBalance}
+            phoenixVaultBalance={phoenixVaultBalance}
+            phoenixPoolBalance={phoenixPoolBalance}
             poolsBalance={poolsBalance}
-            cakeBnbLpBalance={cakeBnbLpBalance}
+            phoenixBnbLpBalance={phoenixBnbLpBalance}
           />
         )}
       </Box>

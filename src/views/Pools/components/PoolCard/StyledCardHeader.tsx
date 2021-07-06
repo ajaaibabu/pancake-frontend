@@ -1,10 +1,10 @@
 import React from 'react'
-import { CardHeader, Heading, Text, Flex } from '@pancakeswap/uikit'
+import { CardHeader, Heading, Text, Flex } from '@panphoenixswap/uikit'
 import styled from 'styled-components'
 import { useTranslation } from 'contexts/Localization'
 import { Token } from 'config/constants/types'
 import TokenPairImage from 'components/TokenPairImage'
-import CakeVaultTokenPairImage from '../CakeVaultCard/CakeVaultTokenPairImage'
+import phoenixVaultTokenPairImage from '../phoenixVaultCard/phoenixVaultTokenPairImage'
 
 const Wrapper = styled(CardHeader)<{ isFinished?: boolean; background?: string }>`
   background: ${({ isFinished, background, theme }) =>
@@ -20,7 +20,7 @@ const StyledCardHeader: React.FC<{
   isStaking?: boolean
 }> = ({ earningToken, stakingToken, isFinished = false, isAutoVault = false, isStaking = false }) => {
   const { t } = useTranslation()
-  const isCakePool = earningToken.symbol === 'CAKE' && stakingToken.symbol === 'CAKE'
+  const isphoenixPool = earningToken.symbol === 'phoenix' && stakingToken.symbol === 'phoenix'
   const background = isStaking ? 'bubblegum' : 'cardHeader'
 
   const getHeadingPrefix = () => {
@@ -28,8 +28,8 @@ const StyledCardHeader: React.FC<{
       // vault
       return t('Auto')
     }
-    if (isCakePool) {
-      // manual cake
+    if (isphoenixPool) {
+      // manual phoenix
       return t('Manual')
     }
     // all other pools
@@ -40,8 +40,8 @@ const StyledCardHeader: React.FC<{
     if (isAutoVault) {
       return t('Automatic restaking')
     }
-    if (isCakePool) {
-      return t('Earn CAKE, stake CAKE')
+    if (isphoenixPool) {
+      return t('Earn phoenix, stake phoenix')
     }
     return t('Stake %symbol%', { symbol: stakingToken.symbol })
   }
@@ -56,7 +56,7 @@ const StyledCardHeader: React.FC<{
           <Text color={isFinished ? 'textDisabled' : 'textSubtle'}>{getSubHeading()}</Text>
         </Flex>
         {isAutoVault ? (
-          <CakeVaultTokenPairImage width={64} height={64} />
+          <phoenixVaultTokenPairImage width={64} height={64} />
         ) : (
           <TokenPairImage primaryToken={earningToken} secondaryToken={stakingToken} width={64} height={64} />
         )}

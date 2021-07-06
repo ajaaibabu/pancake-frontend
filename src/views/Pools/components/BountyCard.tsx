@@ -13,10 +13,10 @@ import {
   useModal,
   Box,
   useTooltip,
-} from '@pancakeswap/uikit'
+} from '@panphoenixswap/uikit'
 import { useTranslation } from 'contexts/Localization'
 import { getBalanceNumber } from 'utils/formatBalance'
-import { useCakeVault, usePriceCakeBusd } from 'state/hooks'
+import { usephoenixVault, usePricephoenixBusd } from 'state/hooks'
 import Balance from 'components/Balance'
 import BountyModal from './BountyModal'
 
@@ -31,30 +31,30 @@ const StyledCard = styled(Card)`
 const BountyCard = () => {
   const { t } = useTranslation()
   const {
-    estimatedCakeBountyReward,
+    estimatedphoenixBountyReward,
     fees: { callFee },
-  } = useCakeVault()
-  const cakePriceBusd = usePriceCakeBusd()
+  } = usephoenixVault()
+  const phoenixPriceBusd = usePricephoenixBusd()
 
   const estimatedDollarBountyReward = useMemo(() => {
-    return new BigNumber(estimatedCakeBountyReward).multipliedBy(cakePriceBusd)
-  }, [cakePriceBusd, estimatedCakeBountyReward])
+    return new BigNumber(estimatedphoenixBountyReward).multipliedBy(phoenixPriceBusd)
+  }, [phoenixPriceBusd, estimatedphoenixBountyReward])
 
   const hasFetchedDollarBounty = estimatedDollarBountyReward.gte(0)
-  const hasFetchedCakeBounty = estimatedCakeBountyReward ? estimatedCakeBountyReward.gte(0) : false
+  const hasFetchedphoenixBounty = estimatedphoenixBountyReward ? estimatedphoenixBountyReward.gte(0) : false
   const dollarBountyToDisplay = hasFetchedDollarBounty ? getBalanceNumber(estimatedDollarBountyReward, 18) : 0
-  const cakeBountyToDisplay = hasFetchedCakeBounty ? getBalanceNumber(estimatedCakeBountyReward, 18) : 0
+  const phoenixBountyToDisplay = hasFetchedphoenixBounty ? getBalanceNumber(estimatedphoenixBountyReward, 18) : 0
 
   const TooltipComponent = ({ fee }: { fee: number }) => (
     <>
       <Text mb="16px">{t('This bounty is given as a reward for providing a service to other users.')}</Text>
       <Text mb="16px">
         {t(
-          'Whenever you successfully claim the bounty, you’re also helping out by activating the Auto CAKE Pool’s compounding function for everyone.',
+          'Whenever you successfully claim the bounty, you’re also helping out by activating the Auto phoenix Pool’s compounding function for everyone.',
         )}
       </Text>
       <Text style={{ fontWeight: 'bold' }}>
-        {t('Auto-Compound Bounty: %fee%% of all Auto CAKE pool users pending yield', { fee: fee / 100 })}
+        {t('Auto-Compound Bounty: %fee%% of all Auto phoenix pool users pending yield', { fee: fee / 100 })}
       </Text>
     </>
   )
@@ -74,7 +74,7 @@ const BountyCard = () => {
           <Flex flexDirection="column">
             <Flex alignItems="center" mb="12px">
               <Text fontSize="16px" bold color="textSubtle" mr="4px">
-                {t('Auto CAKE Bounty')}
+                {t('Auto phoenix Bounty')}
               </Text>
               <Box ref={targetRef}>
                 <HelpIcon color="textSubtle" />
@@ -84,8 +84,8 @@ const BountyCard = () => {
           <Flex alignItems="center" justifyContent="space-between">
             <Flex flexDirection="column" mr="12px">
               <Heading>
-                {hasFetchedCakeBounty ? (
-                  <Balance fontSize="20px" bold value={cakeBountyToDisplay} decimals={3} />
+                {hasFetchedphoenixBounty ? (
+                  <Balance fontSize="20px" bold value={phoenixBountyToDisplay} decimals={3} />
                 ) : (
                   <Skeleton height={20} width={96} mb="2px" />
                 )}
@@ -104,7 +104,7 @@ const BountyCard = () => {
               )}
             </Flex>
             <Button
-              disabled={!dollarBountyToDisplay || !cakeBountyToDisplay || !callFee}
+              disabled={!dollarBountyToDisplay || !phoenixBountyToDisplay || !callFee}
               onClick={onPresentBountyModal}
               scale="sm"
               id="clickClaimVaultBounty"

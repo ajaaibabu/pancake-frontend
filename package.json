@@ -1,5 +1,5 @@
 {
-  "name": "pancake-frontend",
+  "name": "panphoenix-frontend",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -33,8 +33,8 @@
   },
   "dependencies": {
     "@binance-chain/bsc-connector": "^1.0.0",
-    "@pancakeswap-libs/sdk": "^1.0.1",
-    "@pancakeswap/uikit": "^0.39.4",
+    "@panphoenixswap-libs/sdk": "^1.0.1",
+    "@panphoenixswap/uikit": "^0.39.4",
     "@reduxjs/toolkit": "^1.5.0",
     "@types/react": "^17.0.5",
     "@types/react-dom": "^17.0.4",
@@ -75,7 +75,7 @@
   "devDependencies": {
     "@commitlint/cli": "^12.1.1",
     "@commitlint/config-conventional": "^12.1.1",
-    "@pancakeswap/eslint-config-pancake": "^1.1.0",
+    "@panphoenixswap/eslint-config-panphoenix": "^1.1.0",
     "@types/jest": "^26.0.23",
     "@types/react-datepicker": "^3.1.8",
     "@types/react-redux": "^7.1.16",

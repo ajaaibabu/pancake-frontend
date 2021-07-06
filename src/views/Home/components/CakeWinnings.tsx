@@ -1,7 +1,7 @@
 import React from 'react'
 import { getBalanceNumber } from 'utils/formatBalance'
-import { usePriceCakeBusd } from 'state/hooks'
-import { Text } from '@pancakeswap/uikit'
+import { usePricephoenixBusd } from 'state/hooks'
+import { Text } from '@panphoenixswap/uikit'
 import { useWeb3React } from '@web3-react/core'
 import { BigNumber } from 'bignumber.js'
 import styled from 'styled-components'
@@ -13,16 +13,16 @@ const Block = styled.div`
   margin-bottom: 24px;
 `
 
-interface CakeWinningsProps {
+interface phoenixWinningsProps {
   claimAmount: BigNumber
 }
 
-const CakeWinnings: React.FC<CakeWinningsProps> = ({ claimAmount }) => {
+const phoenixWinnings: React.FC<phoenixWinningsProps> = ({ claimAmount }) => {
   const { t } = useTranslation()
   const { account } = useWeb3React()
-  const cakeAmount = getBalanceNumber(claimAmount)
-  const cakePriceBusd = usePriceCakeBusd()
-  const claimAmountBusd = new BigNumber(cakeAmount).multipliedBy(cakePriceBusd).toNumber()
+  const phoenixAmount = getBalanceNumber(claimAmount)
+  const phoenixPriceBusd = usePricephoenixBusd()
+  const claimAmountBusd = new BigNumber(phoenixAmount).multipliedBy(phoenixPriceBusd).toNumber()
 
   if (!account) {
     return (
@@ -34,10 +34,10 @@ const CakeWinnings: React.FC<CakeWinningsProps> = ({ claimAmount }) => {
 
   return (
     <Block>
-      <CardValue value={cakeAmount} lineHeight="1.5" />
-      {cakePriceBusd.gt(0) && <CardBusdValue value={claimAmountBusd} decimals={2} />}
+      <CardValue value={phoenixAmount} lineHeight="1.5" />
+      {phoenixPriceBusd.gt(0) && <CardBusdValue value={claimAmountBusd} decimals={2} />}
     </Block>
   )
 }
 
-export default CakeWinnings
+export default phoenixWinnings

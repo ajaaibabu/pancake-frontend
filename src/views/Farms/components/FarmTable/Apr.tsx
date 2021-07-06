@@ -5,7 +5,7 @@ import { Address } from 'config/constants/types'
 import BigNumber from 'bignumber.js'
 import { BASE_ADD_LIQUIDITY_URL } from 'config'
 import getLiquidityUrlPathParts from 'utils/getLiquidityUrlPathParts'
-import { Skeleton } from '@pancakeswap/uikit'
+import { Skeleton } from '@panphoenixswap/uikit'
 
 export interface AprProps {
   value: string
@@ -13,7 +13,7 @@ export interface AprProps {
   lpLabel: string
   tokenAddress?: Address
   quoteTokenAddress?: Address
-  cakePrice: BigNumber
+  phoenixPrice: BigNumber
   originalValue: number
   hideButton?: boolean
 }
@@ -45,7 +45,7 @@ const Apr: React.FC<AprProps> = ({
   lpLabel,
   tokenAddress,
   quoteTokenAddress,
-  cakePrice,
+  phoenixPrice,
   originalValue,
   hideButton = false,
 }) => {
@@ -60,7 +60,7 @@ const Apr: React.FC<AprProps> = ({
           {!hideButton && (
             <ApyButton
               lpLabel={lpLabel}
-              cakePrice={cakePrice}
+              phoenixPrice={phoenixPrice}
               apr={originalValue}
               displayApr={value}
               addLiquidityUrl={addLiquidityUrl}

@@ -9,21 +9,21 @@ import { getVotingPower } from '../helpers'
 
 interface State {
   verificationHash: string
-  cakeBalance: BigNumber
-  cakeVaultBalance: BigNumber
-  cakePoolBalance: BigNumber
+  phoenixBalance: BigNumber
+  phoenixVaultBalance: BigNumber
+  phoenixPoolBalance: BigNumber
   poolsBalance: BigNumber
-  cakeBnbLpBalance: BigNumber
+  phoenixBnbLpBalance: BigNumber
   total: BigNumber
 }
 
 const initialState: State = {
   verificationHash: null,
-  cakeBalance: BIG_ZERO,
-  cakeVaultBalance: BIG_ZERO,
-  cakePoolBalance: BIG_ZERO,
+  phoenixBalance: BIG_ZERO,
+  phoenixVaultBalance: BIG_ZERO,
+  phoenixPoolBalance: BIG_ZERO,
   poolsBalance: BIG_ZERO,
-  cakeBnbLpBalance: BIG_ZERO,
+  phoenixBnbLpBalance: BIG_ZERO,
   total: BIG_ZERO,
 }
 
@@ -41,12 +41,12 @@ const useGetVotingPower = (block?: number, isActive = true): State & { isLoading
         const eligiblePools = await getActivePools(blockNumber)
         const poolAddresses = eligiblePools.map(({ contractAddress }) => getAddress(contractAddress))
         const {
-          cakeBalance,
-          cakeBnbLpBalance,
-          cakePoolBalance,
+          phoenixBalance,
+          phoenixBnbLpBalance,
+          phoenixPoolBalance,
           total,
           poolsBalance,
-          cakeVaultBalance,
+          phoenixVaultBalance,
           verificationHash,
         } = await getVotingPower(account, poolAddresses, blockNumber)
 
@@ -54,11 +54,11 @@ const useGetVotingPower = (block?: number, isActive = true): State & { isLoading
           setVotingPower((prevVotingPower) => ({
             ...prevVotingPower,
             verificationHash,
-            cakeBalance: new BigNumber(cakeBalance),
-            cakeBnbLpBalance: new BigNumber(cakeBnbLpBalance),
-            cakePoolBalance: new BigNumber(cakePoolBalance),
+            phoenixBalance: new BigNumber(phoenixBalance),
+            phoenixBnbLpBalance: new BigNumber(phoenixBnbLpBalance),
+            phoenixPoolBalance: new BigNumber(phoenixPoolBalance),
             poolsBalance: new BigNumber(poolsBalance),
-            cakeVaultBalance: new BigNumber(cakeVaultBalance),
+            phoenixVaultBalance: new BigNumber(phoenixVaultBalance),
             total: new BigNumber(total),
           }))
         }

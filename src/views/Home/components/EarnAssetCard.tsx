@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import orderBy from 'lodash/orderBy'
-import { Heading, Card, CardBody, Flex, ArrowForwardIcon } from '@pancakeswap/uikit'
+import { Heading, Card, CardBody, Flex, ArrowForwardIcon } from '@panphoenixswap/uikit'
 import { NavLink } from 'react-router-dom'
 import pools from 'config/constants/pools'
 import { Pool } from 'state/types'
@@ -26,10 +26,10 @@ const CardMidContent = styled(Heading).attrs({ scale: 'xl' })`
   line-height: 44px;
 `
 
-const activeNonCakePools = pools.filter((pool) => !pool.isFinished && !pool.earningToken.symbol.includes('CAKE'))
-const latestPools: Pool[] = orderBy(activeNonCakePools, ['sortOrder', 'pid'], ['desc', 'desc']).slice(0, 3)
-// Always include CAKE
-const assets = ['CAKE', ...latestPools.map((pool) => pool.earningToken.symbol)].join(', ')
+const activeNonphoenixPools = pools.filter((pool) => !pool.isFinished && !pool.earningToken.symbol.includes('phoenix'))
+const latestPools: Pool[] = orderBy(activeNonphoenixPools, ['sortOrder', 'pid'], ['desc', 'desc']).slice(0, 3)
+// Always include phoenix
+const assets = ['phoenix', ...latestPools.map((pool) => pool.earningToken.symbol)].join(', ')
 
 const EarnAssetCard = () => {
   const { t } = useTranslation()

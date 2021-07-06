@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useTranslation } from 'contexts/Localization'
 import { useWeb3React } from '@web3-react/core'
 import { useProfile } from 'state/hooks'
-import { Flex, Box, Image } from '@pancakeswap/uikit'
+import { Flex, Box, Image } from '@panphoenixswap/uikit'
 import styled from 'styled-components'
 import { useTradingCompetitionContract } from 'hooks/useContract'
 import useTheme from 'hooks/useTheme'
@@ -103,7 +103,7 @@ const TradingCompetition = () => {
     hasRegistered: false,
     hasUserClaimed: false,
     userRewardGroup: '0',
-    userCakeRewards: '0',
+    userphoenixRewards: '0',
     userPointReward: '0',
     canClaimNFT: false,
   })
@@ -118,19 +118,19 @@ const TradingCompetition = () => {
   const [team1LeaderboardInformation, setTeam1LeaderboardInformation] = useState({ teamId: 1, leaderboardData: null })
   // 2. Flippers
   const [team2LeaderboardInformation, setTeam2LeaderboardInformation] = useState({ teamId: 2, leaderboardData: null })
-  // 3. Cakers
+  // 3. phoenixrs
   const [team3LeaderboardInformation, setTeam3LeaderboardInformation] = useState({ teamId: 3, leaderboardData: null })
 
   const isCompetitionLive = currentPhase.state === LIVE
   const hasCompetitionEnded =
     currentPhase.state === FINISHED || currentPhase.state === CLAIM || currentPhase.state === OVER
 
-  const { hasUserClaimed, userCakeRewards, userPointReward, canClaimNFT } = userTradingInformation
+  const { hasUserClaimed, userphoenixRewards, userPointReward, canClaimNFT } = userTradingInformation
 
   const userCanClaimPrizes =
     currentPhase.state === CLAIM &&
     !hasUserClaimed &&
-    (userCakeRewards !== '0' || userPointReward !== '0' || canClaimNFT)
+    (userphoenixRewards !== '0' || userPointReward !== '0' || canClaimNFT)
   const finishedAndPrizesClaimed = hasCompetitionEnded && account && hasUserClaimed
   const finishedAndNothingToClaim = hasCompetitionEnded && account && !userCanClaimPrizes
 
@@ -154,7 +154,7 @@ const TradingCompetition = () => {
         hasRegistered: user[0],
         hasUserClaimed: user[1],
         userRewardGroup: user[2].toString(),
-        userCakeRewards: user[3].toString(),
+        userphoenixRewards: user[3].toString(),
         userPointReward: user[4].toString(),
         canClaimNFT: user[5],
       }
@@ -168,7 +168,7 @@ const TradingCompetition = () => {
         hasRegistered: false,
         hasUserClaimed: false,
         userRewardGroup: '0',
-        userCakeRewards: '0',
+        userphoenixRewards: '0',
         userPointReward: '0',
         canClaimNFT: false,
       })

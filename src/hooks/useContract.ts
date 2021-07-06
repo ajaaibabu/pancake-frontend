@@ -2,10 +2,10 @@ import { useMemo } from 'react'
 import useWeb3Provider from 'hooks/useWeb3Provider'
 import {
   getBep20Contract,
-  getCakeContract,
+  getphoenixContract,
   getBunnyFactoryContract,
   getBunnySpecialContract,
-  getPancakeRabbitContract,
+  getPanphoenixRabbitContract,
   getProfileContract,
   getIfoV1Contract,
   getIfoV2Contract,
@@ -18,12 +18,12 @@ import {
   getTradingCompetitionContract,
   getEasterNftContract,
   getErc721Contract,
-  getCakeVaultContract,
+  getphoenixVaultContract,
   getPredictionsContract,
   getChainlinkOracleContract,
   getSouschefV2Contract,
   getLotteryV2Contract,
-  getBunnySpecialCakeVaultContract,
+  getBunnySpecialphoenixVaultContract,
   getBunnySpecialPredictionContract,
 } from 'utils/contractHelpers'
 
@@ -54,9 +54,9 @@ export const useERC721 = (address: string) => {
   return useMemo(() => getErc721Contract(address, provider.getSigner()), [address, provider])
 }
 
-export const useCake = () => {
+export const usephoenix = () => {
   const provider = useWeb3Provider()
-  return useMemo(() => getCakeContract(provider.getSigner()), [provider])
+  return useMemo(() => getphoenixContract(provider.getSigner()), [provider])
 }
 
 export const useBunnyFactory = () => {
@@ -64,9 +64,9 @@ export const useBunnyFactory = () => {
   return useMemo(() => getBunnyFactoryContract(provider.getSigner()), [provider])
 }
 
-export const usePancakeRabbits = () => {
+export const usePanphoenixRabbits = () => {
   const provider = useWeb3Provider()
-  return useMemo(() => getPancakeRabbitContract(provider.getSigner()), [provider])
+  return useMemo(() => getPanphoenixRabbitContract(provider.getSigner()), [provider])
 }
 
 export const useProfile = () => {
@@ -129,9 +129,9 @@ export const useEasterNftContract = () => {
   return useMemo(() => getEasterNftContract(provider.getSigner()), [provider])
 }
 
-export const useCakeVaultContract = () => {
+export const usephoenixVaultContract = () => {
   const provider = useWeb3Provider()
-  return useMemo(() => getCakeVaultContract(provider.getSigner()), [provider])
+  return useMemo(() => getphoenixVaultContract(provider.getSigner()), [provider])
 }
 
 export const usePredictionsContract = () => {
@@ -144,9 +144,9 @@ export const useChainlinkOracleContract = () => {
   return useMemo(() => getChainlinkOracleContract(provider.getSigner()), [provider])
 }
 
-export const useSpecialBunnyCakeVaultContract = () => {
+export const useSpecialBunnyphoenixVaultContract = () => {
   const provider = useWeb3Provider()
-  return useMemo(() => getBunnySpecialCakeVaultContract(provider.getSigner()), [provider])
+  return useMemo(() => getBunnySpecialphoenixVaultContract(provider.getSigner()), [provider])
 }
 
 export const useSpecialBunnyPredictionContract = () => {
