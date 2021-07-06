@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box, Button, Flex, Heading, ProposalIcon } from '@panphoenixswap/uikit'
+import { Box, Button, Flex, Heading, ProposalIcon } from '@pancakeswap/uikit'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'contexts/Localization'
@@ -24,7 +24,7 @@ const Hero = () => {
               {t('Voting')}
             </Heading>
             <Heading as="h3" scale="lg" mb="16px">
-              {t('Have your say in the future of the PanphoenixSwap Ecosystem')}
+              {t('Have your say in the future of the PancakeSwap Ecosystem')}
             </Heading>
             <Button
               startIcon={<ProposalIcon color="currentColor" width="24px" />}

@@ -8,12 +8,12 @@
       },
       {
         "internalType": "contract IBEP20",
-        "name": "_phoenixToken",
+        "name": "_cakeToken",
         "type": "address"
       },
       {
-        "internalType": "contract IPanphoenixProfile",
-        "name": "_panphoenixProfile",
+        "internalType": "contract IPancakeProfile",
+        "name": "_pancakeProfile",
         "type": "address"
       },
       {
@@ -43,7 +43,7 @@
       {
         "indexed": false,
         "internalType": "uint256",
-        "name": "costphoenix",
+        "name": "costCake",
         "type": "uint256"
       }
     ],
@@ -68,7 +68,7 @@
       {
         "indexed": false,
         "internalType": "uint256",
-        "name": "costphoenix",
+        "name": "costCake",
         "type": "uint256"
       },
       {
@@ -144,7 +144,7 @@
       },
       {
         "internalType": "uint256",
-        "name": "_phoenixCost",
+        "name": "_cakeCost",
         "type": "uint256"
       }
     ],
@@ -175,7 +175,7 @@
       },
       {
         "internalType": "uint256",
-        "name": "phoenixCost",
+        "name": "cakeCost",
         "type": "uint256"
       },
       {
@@ -220,7 +220,7 @@
   },
   {
     "inputs": [],
-    "name": "phoenixToken",
+    "name": "cakeToken",
     "outputs": [
       {
         "internalType": "contract IBEP20",
@@ -370,10 +370,10 @@
   },
   {
     "inputs": [],
-    "name": "panphoenixProfile",
+    "name": "pancakeProfile",
     "outputs": [
       {
-        "internalType": "contract IPanphoenixProfile",
+        "internalType": "contract IPancakeProfile",
         "name": "",
         "type": "address"
       }
@@ -415,7 +415,7 @@
       },
       {
         "internalType": "uint256",
-        "name": "_phoenixCost",
+        "name": "_cakeCost",
         "type": "uint256"
       },
       {

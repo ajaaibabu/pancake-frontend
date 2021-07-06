@@ -1,16 +1,16 @@
 import React from 'react'
-import { Text, TooltipText, useTooltip } from '@panphoenixswap/uikit'
+import { Text, TooltipText, useTooltip } from '@pancakeswap/uikit'
 import { useTranslation } from 'contexts/Localization'
 import Balance from 'components/Balance'
 
-interface RecentphoenixProfitBalanceProps {
-  phoenixToDisplay: number
+interface RecentCakeProfitBalanceProps {
+  cakeToDisplay: number
   dollarValueToDisplay: number
   dateStringToDisplay: string
 }
 
-const RecentphoenixProfitBalance: React.FC<RecentphoenixProfitBalanceProps> = ({
-  phoenixToDisplay,
+const RecentCakeProfitBalance: React.FC<RecentCakeProfitBalanceProps> = ({
+  cakeToDisplay,
   dollarValueToDisplay,
   dateStringToDisplay,
 }) => {
@@ -18,7 +18,7 @@ const RecentphoenixProfitBalance: React.FC<RecentphoenixProfitBalanceProps> = ({
 
   const { targetRef, tooltip, tooltipVisible } = useTooltip(
     <>
-      <Balance fontSize="16px" value={phoenixToDisplay} decimals={3} bold unit=" phoenix" />
+      <Balance fontSize="16px" value={cakeToDisplay} decimals={3} bold unit=" CAKE" />
       <Balance fontSize="16px" value={dollarValueToDisplay} decimals={2} bold prefix="~$" />
       {t('Earned since your last action')}
       <Text>{dateStringToDisplay}</Text>
@@ -32,10 +32,10 @@ const RecentphoenixProfitBalance: React.FC<RecentphoenixProfitBalanceProps> = ({
     <>
       {tooltipVisible && tooltip}
       <TooltipText ref={targetRef} small>
-        <Balance fontSize="14px" value={phoenixToDisplay} />
+        <Balance fontSize="14px" value={cakeToDisplay} />
       </TooltipText>
     </>
   )
 }
 
-export default RecentphoenixProfitBalance
+export default RecentCakeProfitBalance

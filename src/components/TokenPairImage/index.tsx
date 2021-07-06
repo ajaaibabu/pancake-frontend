@@ -2,7 +2,7 @@ import React from 'react'
 import {
   TokenPairImage as UIKitTokenPairImage,
   TokenPairImageProps as UIKitTokenPairImageProps,
-} from '@panphoenixswap/uikit'
+} from '@pancakeswap/uikit'
 import tokens from 'config/constants/tokens'
 import { Token } from 'config/constants/types'
 import { getAddress } from 'utils/addressHelpers'

@@ -1,5 +1,5 @@
 import React from 'react'
-import { ModalContainer, ModalBody, Text, Button, InjectedModalProps, LinkExternal, Flex } from '@panphoenixswap/uikit'
+import { ModalContainer, ModalBody, Text, Button, InjectedModalProps, LinkExternal, Flex } from '@pancakeswap/uikit'
 import { useTranslation } from 'contexts/Localization'
 
 interface ChartDisclaimerProps extends InjectedModalProps {
@@ -28,7 +28,7 @@ const ChartDisclaimer: React.FC<ChartDisclaimerProps> = ({ onSuccess, onDismiss 
         </Button>
         <Flex justifyContent="center" alignItems="center">
           <LinkExternal
-            href="https://docs.panphoenixswap.finance/products/prediction/prediction-faq#what-are-you-using-for-your-price-feed"
+            href="https://docs.pancakeswap.finance/products/prediction/prediction-faq#what-are-you-using-for-your-price-feed"
             external
           >
             {t('Learn More')}

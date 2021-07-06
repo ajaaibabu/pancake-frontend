@@ -1,19 +1,19 @@
 import React from 'react'
-import { Button, Text, useModal, Flex, TooltipText, useTooltip, Skeleton, Heading } from '@panphoenixswap/uikit'
+import { Button, Text, useModal, Flex, TooltipText, useTooltip, Skeleton, Heading } from '@pancakeswap/uikit'
 import BigNumber from 'bignumber.js'
 import { useWeb3React } from '@web3-react/core'
-import { getphoenixVaultEarnings } from 'views/Pools/helpers'
+import { getCakeVaultEarnings } from 'views/Pools/helpers'
 import { PoolCategory } from 'config/constants/types'
 import { formatNumber, getBalanceNumber, getFullDisplayBalance } from 'utils/formatBalance'
 import { useTranslation } from 'contexts/Localization'
 import Balance from 'components/Balance'
-import { usephoenixVault } from 'state/hooks'
+import { useCakeVault } from 'state/hooks'
 import { BIG_ZERO } from 'utils/bigNumber'
 import { Pool } from 'state/types'
 
 import { ActionContainer, ActionTitles, ActionContent } from './styles'
 import CollectModal from '../../PoolCard/Modals/CollectModal'
-import UnstakingFeeCountdownRow from '../../phoenixVaultCard/UnstakingFeeCountdownRow'
+import UnstakingFeeCountdownRow from '../../CakeVaultCard/UnstakingFeeCountdownRow'
 
 interface HarvestActionProps extends Pool {
   userDataLoaded: boolean
@@ -32,7 +32,7 @@ const HarvestAction: React.FunctionComponent<HarvestActionProps> = ({
   const { account } = useWeb3React()
 
   const earnings = userData?.pendingReward ? new BigNumber(userData.pendingReward) : BIG_ZERO
-  // These will be reassigned later if its Auto phoenix vault
+  // These will be reassigned later if its Auto CAKE vault
   let earningTokenBalance = getBalanceNumber(earnings, earningToken.decimals)
   let earningTokenDollarBalance = getBalanceNumber(earnings.multipliedBy(earningTokenPrice), earningToken.decimals)
   let hasEarnings = earnings.gt(0)
@@ -41,21 +41,21 @@ const HarvestAction: React.FunctionComponent<HarvestActionProps> = ({
   const isCompoundPool = sousId === 0
   const isBnbPool = poolCategory === PoolCategory.BINANCE
 
-  // Auto phoenix vault calculations
+  // Auto CAKE vault calculations
   const {
-    userData: { phoenixAtLastUserAction, userShares },
+    userData: { cakeAtLastUserAction, userShares },
     pricePerFullShare,
     fees: { performanceFee },
-  } = usephoenixVault()
-  const { hasAutoEarnings, autophoenixToDisplay, autoUsdToDisplay } = getphoenixVaultEarnings(
+  } = useCakeVault()
+  const { hasAutoEarnings, autoCakeToDisplay, autoUsdToDisplay } = getCakeVaultEarnings(
     account,
-    phoenixAtLastUserAction,
+    cakeAtLastUserAction,
     userShares,
     pricePerFullShare,
     earningTokenPrice,
   )
 
-  earningTokenBalance = isAutoVault ? autophoenixToDisplay : earningTokenBalance
+  earningTokenBalance = isAutoVault ? autoCakeToDisplay : earningTokenBalance
   hasEarnings = isAutoVault ? hasAutoEarnings : hasEarnings
   earningTokenDollarBalance = isAutoVault ? autoUsdToDisplay : earningTokenDollarBalance
 
@@ -78,7 +78,7 @@ const HarvestAction: React.FunctionComponent<HarvestActionProps> = ({
 
   const actionTitle = isAutoVault ? (
     <Text fontSize="12px" bold color="secondary" as="span" textTransform="uppercase">
-      {t('Recent phoenix profit')}
+      {t('Recent CAKE profit')}
     </Text>
   ) : (
     <>

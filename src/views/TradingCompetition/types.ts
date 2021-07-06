@@ -81,7 +81,7 @@ export interface TeamRanksProps {
 export interface UserRewardsProps {
   userCanClaim?: boolean
   userRewards?: {
-    phoenixToClaim?: string
+    cakeToClaim?: string
     pointsToClaim?: string
   }
 }
@@ -90,7 +90,7 @@ export interface UserTradingInformationProps {
   hasRegistered?: boolean
   hasUserClaimed?: boolean
   userRewardGroup?: string
-  userphoenixRewards?: string
+  userCakeRewards?: string
   userPointReward?: string
   canClaimNFT?: boolean
 }

@@ -18,7 +18,7 @@ const initialState: State = {
     tokenId: null,
   },
   userName: '',
-  minimumphoenixRequired: new BigNumber(totalCost).multipliedBy(DEFAULT_TOKEN_DECIMAL),
+  minimumCakeRequired: new BigNumber(totalCost).multipliedBy(DEFAULT_TOKEN_DECIMAL),
   allowance: new BigNumber(allowance).multipliedBy(DEFAULT_TOKEN_DECIMAL),
 }
 

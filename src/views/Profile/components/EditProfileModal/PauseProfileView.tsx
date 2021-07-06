@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { AutoRenewIcon, Button, Checkbox, Flex, InjectedModalProps, Text } from '@panphoenixswap/uikit'
+import { AutoRenewIcon, Button, Checkbox, Flex, InjectedModalProps, Text } from '@pancakeswap/uikit'
 import { useTranslation } from 'contexts/Localization'
 import useGetProfileCosts from 'views/Profile/hooks/useGetProfileCosts'
 import { useAppDispatch } from 'state'
@@ -16,9 +16,9 @@ const PauseProfilePage: React.FC<PauseProfilePageProps> = ({ onDismiss }) => {
   const [isAcknowledged, setIsAcknowledged] = useState(false)
   const [isConfirming, setIsConfirming] = useState(false)
   const { profile } = useProfile()
-  const { numberphoenixToReactivate } = useGetProfileCosts()
+  const { numberCakeToReactivate } = useGetProfileCosts()
   const { t } = useTranslation()
-  const panphoenixProfileContract = useProfileContract()
+  const pancakeProfileContract = useProfileContract()
   const { account } = useWeb3React()
   const { toastSuccess, toastError } = useToast()
   const dispatch = useAppDispatch()
@@ -26,7 +26,7 @@ const PauseProfilePage: React.FC<PauseProfilePageProps> = ({ onDismiss }) => {
   const handleChange = () => setIsAcknowledged(!isAcknowledged)
 
   const handleDeactivateProfile = async () => {
-    const tx = await panphoenixProfileContract.pauseProfile()
+    const tx = await pancakeProfileContract.pauseProfile()
     setIsConfirming(true)
     const receipt = await tx.wait()
     if (receipt.status) {
@@ -55,7 +55,7 @@ const PauseProfilePage: React.FC<PauseProfilePageProps> = ({ onDismiss }) => {
         )}
       </Text>
       <Text as="p" color="textSubtle" mb="24px">
-        {t('Cost to reactivate in the future: %cost% phoenix', { cost: getBalanceNumber(numberphoenixToReactivate) })}
+        {t('Cost to reactivate in the future: %cost% CAKE', { cost: getBalanceNumber(numberCakeToReactivate) })}
       </Text>
       <label htmlFor="acknowledgement" style={{ cursor: 'pointer', display: 'block', marginBottom: '24px' }}>
         <Flex alignItems="center">

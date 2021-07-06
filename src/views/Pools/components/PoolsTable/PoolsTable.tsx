@@ -1,6 +1,6 @@
 import React, { useRef } from 'react'
 import styled from 'styled-components'
-import { Button, ChevronUpIcon } from '@panphoenixswap/uikit'
+import { Button, ChevronUpIcon } from '@pancakeswap/uikit'
 import { useTranslation } from 'contexts/Localization'
 import { Pool } from 'state/types'
 import PoolRow from './PoolRow'
@@ -47,7 +47,7 @@ const PoolsTable: React.FC<PoolsTableProps> = ({ pools, userDataLoaded, account 
       <StyledTable role="table" ref={tableWrapperEl}>
         {pools.map((pool) => (
           <PoolRow
-            key={pool.isAutoVault ? 'auto-phoenix' : pool.sousId}
+            key={pool.isAutoVault ? 'auto-cake' : pool.sousId}
             pool={pool}
             account={account}
             userDataLoaded={userDataLoaded}

@@ -1,15 +1,15 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Skeleton, Text, useTooltip, HelpIcon, Flex, Box, useModal, useMatchBreakpoints } from '@panphoenixswap/uikit'
+import { Skeleton, Text, useTooltip, HelpIcon, Flex, Box, useModal, useMatchBreakpoints } from '@pancakeswap/uikit'
 import { Pool } from 'state/types'
 import BigNumber from 'bignumber.js'
 import { PoolCategory } from 'config/constants/types'
 import { BIG_ZERO } from 'utils/bigNumber'
 import { formatNumber, getBalanceNumber, getFullDisplayBalance } from 'utils/formatBalance'
 import Balance from 'components/Balance'
-import { usephoenixVault } from 'state/hooks'
+import { useCakeVault } from 'state/hooks'
 import { useTranslation } from 'contexts/Localization'
-import { getphoenixVaultEarnings } from 'views/Pools/helpers'
+import { getCakeVaultEarnings } from 'views/Pools/helpers'
 import BaseCell, { CellContent } from './BaseCell'
 import CollectModal from '../../PoolCard/Modals/CollectModal'
 
@@ -34,10 +34,10 @@ const EarningsCell: React.FC<EarningsCellProps> = ({ pool, account, userDataLoad
   const { t } = useTranslation()
   const { isXs, isSm } = useMatchBreakpoints()
   const { sousId, earningToken, poolCategory, userData, earningTokenPrice, isAutoVault } = pool
-  const isManualphoenixPool = sousId === 0
+  const isManualCakePool = sousId === 0
 
   const earnings = userData?.pendingReward ? new BigNumber(userData.pendingReward) : BIG_ZERO
-  // These will be reassigned later if its Auto phoenix vault
+  // These will be reassigned later if its Auto CAKE vault
   let earningTokenBalance = getBalanceNumber(earnings, earningToken.decimals)
   let earningTokenDollarBalance = getBalanceNumber(earnings.multipliedBy(earningTokenPrice), earningToken.decimals)
   let hasEarnings = account && earnings.gt(0)
@@ -45,14 +45,14 @@ const EarningsCell: React.FC<EarningsCellProps> = ({ pool, account, userDataLoad
   const formattedBalance = formatNumber(earningTokenBalance, 3, 3)
   const isBnbPool = poolCategory === PoolCategory.BINANCE
 
-  // Auto phoenix vault calculations
+  // Auto CAKE vault calculations
   const {
-    userData: { phoenixAtLastUserAction, userShares, lastUserActionTime },
+    userData: { cakeAtLastUserAction, userShares, lastUserActionTime },
     pricePerFullShare,
-  } = usephoenixVault()
-  const { hasAutoEarnings, autophoenixToDisplay, autoUsdToDisplay } = getphoenixVaultEarnings(
+  } = useCakeVault()
+  const { hasAutoEarnings, autoCakeToDisplay, autoUsdToDisplay } = getCakeVaultEarnings(
     account,
-    phoenixAtLastUserAction,
+    cakeAtLastUserAction,
     userShares,
     pricePerFullShare,
     earningTokenPrice,
@@ -62,14 +62,14 @@ const EarningsCell: React.FC<EarningsCellProps> = ({ pool, account, userDataLoad
   const dateTimeLastAction = new Date(lastActionInMs)
   const dateStringToDisplay = dateTimeLastAction.toLocaleString()
 
-  const labelText = isAutoVault ? t('Recent phoenix profit') : t('%asset% Earned', { asset: earningToken.symbol })
-  earningTokenBalance = isAutoVault ? autophoenixToDisplay : earningTokenBalance
+  const labelText = isAutoVault ? t('Recent CAKE profit') : t('%asset% Earned', { asset: earningToken.symbol })
+  earningTokenBalance = isAutoVault ? autoCakeToDisplay : earningTokenBalance
   hasEarnings = isAutoVault ? hasAutoEarnings : hasEarnings
   earningTokenDollarBalance = isAutoVault ? autoUsdToDisplay : earningTokenDollarBalance
 
   const { targetRef, tooltip, tooltipVisible } = useTooltip(
     <>
-      <Balance fontSize="16px" value={autophoenixToDisplay} decimals={3} bold unit=" phoenix" />
+      <Balance fontSize="16px" value={autoCakeToDisplay} decimals={3} bold unit=" CAKE" />
       <Balance fontSize="16px" value={autoUsdToDisplay} decimals={2} bold prefix="~$" />
       {t('Earned since your last action')}
       <Text>{dateStringToDisplay}</Text>
@@ -85,7 +85,7 @@ const EarningsCell: React.FC<EarningsCellProps> = ({ pool, account, userDataLoad
       earningsDollarValue={earningTokenDollarBalance}
       sousId={sousId}
       isBnbPool={isBnbPool}
-      isCompoundPool={isManualphoenixPool}
+      isCompoundPool={isManualCakePool}
     />,
   )
 

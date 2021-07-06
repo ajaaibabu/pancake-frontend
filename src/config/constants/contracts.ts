@@ -23,11 +23,11 @@ export default {
     56: '0xfF6FD90A470Aaa0c1B8A54681746b07AcdFedc9B',
     97: '0x8F3273Fb89B075b1645095ABaC6ed17B2d4Bc576',
   },
-  panphoenixProfile: {
+  pancakeProfile: {
     56: '0xDf4dBf6536201370F95e06A0F8a7a70fE40E388a',
     97: '0x4B683C7E13B6d5D7fd1FeA9530F451954c1A7c8A',
   },
-  panphoenixRabbits: {
+  pancakeRabbits: {
     56: '0xDf7952B35f24aCF7fC0487D01c8d5690a60DBa07',
     97: '0x60935F36e4631F73f0f407e68642144e07aC7f5E',
   },
@@ -55,7 +55,7 @@ export default {
     56: '0x23c41D28A239dDCAABd1bb1deF8d057189510066',
     97: '0x24ec6962dbe874F6B67B5C50857565667fA0854F',
   },
-  phoenixVault: {
+  cakeVault: {
     56: '0xa80240Eb5d7E05d3F250cF000eEc0891d00b51CC',
     97: '',
   },
@@ -67,7 +67,7 @@ export default {
     56: '0x0567F2323251f0Aab15c8dFb1967E4e8A7D42aeE',
     97: '',
   },
-  bunnySpecialphoenixVault: {
+  bunnySpecialCakeVault: {
     56: '0x5B4a770Abe7Eafb2601CA4dF9d73EA99363E60a4',
     97: '',
   },

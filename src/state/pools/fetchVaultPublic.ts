@@ -1,8 +1,8 @@
 import BigNumber from 'bignumber.js'
-import { convertSharesTophoenix } from 'views/Pools/helpers'
+import { convertSharesToCake } from 'views/Pools/helpers'
 import { multicallv2 } from 'utils/multicall'
-import phoenixVaultAbi from 'config/abi/phoenixVault.json'
-import { getphoenixVaultAddress } from 'utils/addressHelpers'
+import cakeVaultAbi from 'config/abi/cakeVault.json'
+import { getCakeVaultAddress } from 'utils/addressHelpers'
 import { BIG_ZERO } from 'utils/bigNumber'
 
 export const fetchPublicVaultData = async () => {
@@ -10,35 +10,35 @@ export const fetchPublicVaultData = async () => {
     const calls = [
       'getPricePerFullShare',
       'totalShares',
-      'calculateHarvestphoenixRewards',
-      'calculateTotalPendingphoenixRewards',
+      'calculateHarvestCakeRewards',
+      'calculateTotalPendingCakeRewards',
     ].map((method) => ({
-      address: getphoenixVaultAddress(),
+      address: getCakeVaultAddress(),
       name: method,
     }))
 
-    const [[sharePrice], [shares], [estimatedphoenixBountyReward], [totalPendingphoenixHarvest]] = await multicallv2(
-      phoenixVaultAbi,
+    const [[sharePrice], [shares], [estimatedCakeBountyReward], [totalPendingCakeHarvest]] = await multicallv2(
+      cakeVaultAbi,
       calls,
     )
 
     const totalSharesAsBigNumber = shares ? new BigNumber(shares.toString()) : BIG_ZERO
     const sharePriceAsBigNumber = sharePrice ? new BigNumber(sharePrice.toString()) : BIG_ZERO
-    const totalphoenixInVaultEstimate = convertSharesTophoenix(totalSharesAsBigNumber, sharePriceAsBigNumber)
+    const totalCakeInVaultEstimate = convertSharesToCake(totalSharesAsBigNumber, sharePriceAsBigNumber)
     return {
       totalShares: totalSharesAsBigNumber.toJSON(),
       pricePerFullShare: sharePriceAsBigNumber.toJSON(),
-      totalphoenixInVault: totalphoenixInVaultEstimate.phoenixAsBigNumber.toJSON(),
-      estimatedphoenixBountyReward: new BigNumber(estimatedphoenixBountyReward.toString()).toJSON(),
-      totalPendingphoenixHarvest: new BigNumber(totalPendingphoenixHarvest.toString()).toJSON(),
+      totalCakeInVault: totalCakeInVaultEstimate.cakeAsBigNumber.toJSON(),
+      estimatedCakeBountyReward: new BigNumber(estimatedCakeBountyReward.toString()).toJSON(),
+      totalPendingCakeHarvest: new BigNumber(totalPendingCakeHarvest.toString()).toJSON(),
     }
   } catch (error) {
     return {
       totalShares: null,
       pricePerFullShare: null,
-      totalphoenixInVault: null,
-      estimatedphoenixBountyReward: null,
-      totalPendingphoenixHarvest: null,
+      totalCakeInVault: null,
+      estimatedCakeBountyReward: null,
+      totalPendingCakeHarvest: null,
     }
   }
 }
@@ -46,11 +46,11 @@ export const fetchPublicVaultData = async () => {
 export const fetchVaultFees = async () => {
   try {
     const calls = ['performanceFee', 'callFee', 'withdrawFee', 'withdrawFeePeriod'].map((method) => ({
-      address: getphoenixVaultAddress(),
+      address: getCakeVaultAddress(),
       name: method,
     }))
 
-    const [[performanceFee], [callFee], [withdrawalFee], [withdrawalFeePeriod]] = await multicallv2(phoenixVaultAbi, calls)
+    const [[performanceFee], [callFee], [withdrawalFee], [withdrawalFeePeriod]] = await multicallv2(cakeVaultAbi, calls)
 
     return {
       performanceFee: performanceFee.toNumber(),

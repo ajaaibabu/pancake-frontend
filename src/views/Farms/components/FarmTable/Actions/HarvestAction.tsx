@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Button, Skeleton, Text } from '@panphoenixswap/uikit'
+import { Button, Skeleton, Text } from '@pancakeswap/uikit'
 import BigNumber from 'bignumber.js'
 import { useWeb3React } from '@web3-react/core'
 import { FarmWithStakedValue } from 'views/Farms/components/FarmCard/FarmCard'
@@ -8,7 +8,7 @@ import { BIG_ZERO } from 'utils/bigNumber'
 import { getBalanceAmount } from 'utils/formatBalance'
 import { useAppDispatch } from 'state'
 import { fetchFarmUserDataAsync } from 'state/farms'
-import { usePricephoenixBusd } from 'state/hooks'
+import { usePriceCakeBusd } from 'state/hooks'
 import useToast from 'hooks/useToast'
 import { useTranslation } from 'contexts/Localization'
 import useHarvestFarm from '../../../hooks/useHarvestFarm'
@@ -22,7 +22,7 @@ interface HarvestActionProps extends FarmWithStakedValue {
 const HarvestAction: React.FunctionComponent<HarvestActionProps> = ({ pid, userData, userDataReady }) => {
   const { toastSuccess, toastError } = useToast()
   const earningsBigNumber = new BigNumber(userData.earnings)
-  const phoenixPrice = usePricephoenixBusd()
+  const cakePrice = usePriceCakeBusd()
   let earnings = BIG_ZERO
   let earningsBusd = 0
   let displayBalance = userDataReady ? earnings.toLocaleString() : <Skeleton width={60} />
@@ -30,7 +30,7 @@ const HarvestAction: React.FunctionComponent<HarvestActionProps> = ({ pid, userD
   // If user didn't connect wallet default balance will be 0
   if (!earningsBigNumber.isZero()) {
     earnings = getBalanceAmount(earningsBigNumber)
-    earningsBusd = earnings.multipliedBy(phoenixPrice).toNumber()
+    earningsBusd = earnings.multipliedBy(cakePrice).toNumber()
     displayBalance = earnings.toFixed(3, BigNumber.ROUND_DOWN)
   }
 
@@ -44,7 +44,7 @@ const HarvestAction: React.FunctionComponent<HarvestActionProps> = ({ pid, userD
     <ActionContainer>
       <ActionTitles>
         <Text bold textTransform="uppercase" color="secondary" fontSize="12px" pr="4px">
-          phoenix
+          CAKE
         </Text>
         <Text bold textTransform="uppercase" color="textSubtle" fontSize="12px">
           {t('Earned')}
@@ -65,7 +65,7 @@ const HarvestAction: React.FunctionComponent<HarvestActionProps> = ({ pid, userD
               await onReward()
               toastSuccess(
                 `${t('Harvested')}!`,
-                t('Your %symbol% earnings have been sent to your wallet!', { symbol: 'phoenix' }),
+                t('Your %symbol% earnings have been sent to your wallet!', { symbol: 'CAKE' }),
               )
             } catch (e) {
               toastError(t('Canceled'), t('Please try again and confirm the transaction.'))

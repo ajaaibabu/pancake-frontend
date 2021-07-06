@@ -2,9 +2,9 @@ export { fetchFarmsPublicDataAsync, fetchFarmUserDataAsync } from './farms'
 export {
   fetchPoolsPublicDataAsync,
   fetchPoolsUserDataAsync,
-  fetchphoenixVaultPublicData,
-  fetchphoenixVaultUserData,
-  fetchphoenixVaultFees,
+  fetchCakeVaultPublicData,
+  fetchCakeVaultUserData,
+  fetchCakeVaultFees,
   updateUserAllowance,
   updateUserBalance,
   updateUserPendingReward,

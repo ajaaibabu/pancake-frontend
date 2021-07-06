@@ -3,7 +3,7 @@
     "inputs": [
       {
         "internalType": "address",
-        "name": "_panphoenixPrediction",
+        "name": "_pancakePrediction",
         "type": "address"
       },
       {
@@ -13,7 +13,7 @@
       },
       {
         "internalType": "address",
-        "name": "_panphoenixProfile",
+        "name": "_pancakeProfile",
         "type": "address"
       },
       {
@@ -318,7 +318,7 @@
   },
   {
     "inputs": [],
-    "name": "panphoenixPrediction",
+    "name": "pancakePrediction",
     "outputs": [
       {
         "internalType": "contract BnbPricePrediction",
@@ -331,10 +331,10 @@
   },
   {
     "inputs": [],
-    "name": "panphoenixProfile",
+    "name": "pancakeProfile",
     "outputs": [
       {
-        "internalType": "contract PanphoenixProfile",
+        "internalType": "contract PancakeProfile",
         "name": "",
         "type": "address"
       }

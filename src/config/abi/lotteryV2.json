@@ -3,7 +3,7 @@
     "inputs": [
       {
         "internalType": "address",
-        "name": "_phoenixTokenAddress",
+        "name": "_cakeTokenAddress",
         "type": "address"
       },
       {
@@ -121,7 +121,7 @@
       {
         "indexed": false,
         "internalType": "uint256",
-        "name": "priceTicketInphoenix",
+        "name": "priceTicketInCake",
         "type": "uint256"
       },
       {
@@ -319,7 +319,7 @@
   },
   {
     "inputs": [],
-    "name": "phoenixToken",
+    "name": "cakeToken",
     "outputs": [
       {
         "internalType": "contract IERC20",
@@ -600,7 +600,7 @@
       },
       {
         "internalType": "uint256",
-        "name": "_priceTicketInphoenix",
+        "name": "_priceTicketInCake",
         "type": "uint256"
       },
       {
@@ -676,7 +676,7 @@
       {
         "components": [
           {
-            "internalType": "enum PanphoenixSwapLottery.Status",
+            "internalType": "enum PancakeSwapLottery.Status",
             "name": "status",
             "type": "uint8"
           },
@@ -692,7 +692,7 @@
           },
           {
             "internalType": "uint256",
-            "name": "priceTicketInphoenix",
+            "name": "priceTicketInCake",
             "type": "uint256"
           },
           {
@@ -712,7 +712,7 @@
           },
           {
             "internalType": "uint256[6]",
-            "name": "phoenixPerBracket",
+            "name": "cakePerBracket",
             "type": "uint256[6]"
           },
           {
@@ -732,7 +732,7 @@
           },
           {
             "internalType": "uint256",
-            "name": "amountCollectedInphoenix",
+            "name": "amountCollectedInCake",
             "type": "uint256"
           },
           {
@@ -741,7 +741,7 @@
             "type": "uint32"
           }
         ],
-        "internalType": "struct PanphoenixSwapLottery.Lottery",
+        "internalType": "struct PancakeSwapLottery.Lottery",
         "name": "",
         "type": "tuple"
       }

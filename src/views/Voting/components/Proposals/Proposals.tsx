@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Box, Breadcrumbs, Card, Flex, Heading, Text } from '@panphoenixswap/uikit'
+import { Box, Breadcrumbs, Card, Flex, Heading, Text } from '@pancakeswap/uikit'
 import { useTranslation } from 'contexts/Localization'
 import Container from 'components/layout/Container'
 import { useAppDispatch } from 'state'

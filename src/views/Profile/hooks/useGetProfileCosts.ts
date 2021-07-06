@@ -3,38 +3,38 @@ import { useTranslation } from 'contexts/Localization'
 import BigNumber from 'bignumber.js'
 import { BIG_ZERO } from 'utils/bigNumber'
 import { multicallv2 } from 'utils/multicall'
-import profileABI from 'config/abi/panphoenixProfile.json'
-import { getPanphoenixProfileAddress } from 'utils/addressHelpers'
+import profileABI from 'config/abi/pancakeProfile.json'
+import { getPancakeProfileAddress } from 'utils/addressHelpers'
 import useToast from '../../../hooks/useToast'
 
 const useGetProfileCosts = () => {
   const { t } = useTranslation()
   const [costs, setCosts] = useState({
-    numberphoenixToReactivate: BIG_ZERO,
-    numberphoenixToRegister: BIG_ZERO,
-    numberphoenixToUpdate: BIG_ZERO,
+    numberCakeToReactivate: BIG_ZERO,
+    numberCakeToRegister: BIG_ZERO,
+    numberCakeToUpdate: BIG_ZERO,
   })
   const { toastError } = useToast()
 
   useEffect(() => {
     const fetchCosts = async () => {
       try {
-        const calls = ['numberphoenixToReactivate', 'numberphoenixToRegister', 'numberphoenixToUpdate'].map((method) => ({
-          address: getPanphoenixProfileAddress(),
+        const calls = ['numberCakeToReactivate', 'numberCakeToRegister', 'numberCakeToUpdate'].map((method) => ({
+          address: getPancakeProfileAddress(),
           name: method,
         }))
-        const [[numberphoenixToReactivate], [numberphoenixToRegister], [numberphoenixToUpdate]] = await multicallv2(
+        const [[numberCakeToReactivate], [numberCakeToRegister], [numberCakeToUpdate]] = await multicallv2(
           profileABI,
           calls,
         )
 
         setCosts({
-          numberphoenixToReactivate: new BigNumber(numberphoenixToReactivate.toString()),
-          numberphoenixToRegister: new BigNumber(numberphoenixToRegister.toString()),
-          numberphoenixToUpdate: new BigNumber(numberphoenixToUpdate.toString()),
+          numberCakeToReactivate: new BigNumber(numberCakeToReactivate.toString()),
+          numberCakeToRegister: new BigNumber(numberCakeToRegister.toString()),
+          numberCakeToUpdate: new BigNumber(numberCakeToUpdate.toString()),
         })
       } catch (error) {
-        toastError(t('Error'), t('Could not retrieve phoenix costs for profile'))
+        toastError(t('Error'), t('Could not retrieve CAKE costs for profile'))
       }
     }
 

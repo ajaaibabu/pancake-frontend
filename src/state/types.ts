@@ -81,23 +81,23 @@ export interface VaultFees {
 export interface VaultUser {
   isLoading: boolean
   userShares: string
-  phoenixAtLastUserAction: string
+  cakeAtLastUserAction: string
   lastDepositedTime: string
   lastUserActionTime: string
 }
-export interface phoenixVault {
+export interface CakeVault {
   totalShares?: string
   pricePerFullShare?: string
-  totalphoenixInVault?: string
-  estimatedphoenixBountyReward?: string
-  totalPendingphoenixHarvest?: string
+  totalCakeInVault?: string
+  estimatedCakeBountyReward?: string
+  totalPendingCakeHarvest?: string
   fees?: VaultFees
   userData?: VaultUser
 }
 
 export interface PoolsState {
   data: Pool[]
-  phoenixVault: phoenixVault
+  cakeVault: CakeVault
   userDataLoaded: boolean
 }
 

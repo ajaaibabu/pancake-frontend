@@ -1,25 +1,25 @@
 import React from 'react'
-import { Text, Flex } from '@panphoenixswap/uikit'
+import { Text, Flex } from '@pancakeswap/uikit'
 import BigNumber from 'bignumber.js'
 import { useTranslation } from 'contexts/Localization'
 import { VotingBox, ModalInner } from './styles'
 
 interface DetailsViewProps {
   total: BigNumber
-  phoenixBalance: BigNumber
-  phoenixVaultBalance: BigNumber
-  phoenixPoolBalance: BigNumber
+  cakeBalance: BigNumber
+  cakeVaultBalance: BigNumber
+  cakePoolBalance: BigNumber
   poolsBalance: BigNumber
-  phoenixBnbLpBalance: BigNumber
+  cakeBnbLpBalance: BigNumber
 }
 
 const DetailsView: React.FC<DetailsViewProps> = ({
   total,
-  phoenixBalance,
-  phoenixVaultBalance,
-  phoenixPoolBalance,
+  cakeBalance,
+  cakeVaultBalance,
+  cakePoolBalance,
   poolsBalance,
-  phoenixBnbLpBalance,
+  cakeBnbLpBalance,
 }) => {
   const { t } = useTranslation()
 
@@ -27,7 +27,7 @@ const DetailsView: React.FC<DetailsViewProps> = ({
     <ModalInner mb="0">
       <Text as="p" mb="24px" fontSize="14px" color="textSubtle">
         {t(
-          'Your voting power is determined by the amount of phoenix you held at the block detailed below. phoenix held in other places does not contribute to your voting power.',
+          'Your voting power is determined by the amount of CAKE you held at the block detailed below. CAKE held in other places does not contribute to your voting power.',
         )}
       </Text>
       <Text color="secondary" textTransform="uppercase" mb="4px" bold fontSize="14px">
@@ -40,25 +40,25 @@ const DetailsView: React.FC<DetailsViewProps> = ({
         </Text>
       </VotingBox>
       <Text color="secondary" textTransform="uppercase" mb="4px" bold fontSize="14px">
-        {t('Your phoenix Held Now')}
+        {t('Your Cake Held Now')}
       </Text>
       <Flex alignItems="center" justifyContent="space-between" mb="4px">
         <Text color="textSubtle" fontSize="16px">
           {t('Wallet')}
         </Text>
-        <Text textAlign="right">{phoenixBalance.toFormat(3)}</Text>
+        <Text textAlign="right">{cakeBalance.toFormat(3)}</Text>
       </Flex>
       <Flex alignItems="center" justifyContent="space-between" mb="4px">
         <Text color="textSubtle" fontSize="16px">
-          {t('Manual phoenix Pool')}
+          {t('Manual CAKE Pool')}
         </Text>
-        <Text textAlign="right">{phoenixPoolBalance.toFormat(3)}</Text>
+        <Text textAlign="right">{cakePoolBalance.toFormat(3)}</Text>
       </Flex>
       <Flex alignItems="center" justifyContent="space-between" mb="4px">
         <Text color="textSubtle" fontSize="16px">
-          {t('Auto phoenix Pool')}
+          {t('Auto CAKE Pool')}
         </Text>
-        <Text textAlign="right">{phoenixVaultBalance.toFormat(3)}</Text>
+        <Text textAlign="right">{cakeVaultBalance.toFormat(3)}</Text>
       </Flex>
       <Flex alignItems="center" justifyContent="space-between" mb="4px">
         <Text color="textSubtle" fontSize="16px">
@@ -68,9 +68,9 @@ const DetailsView: React.FC<DetailsViewProps> = ({
       </Flex>
       <Flex alignItems="center" justifyContent="space-between" mb="4px">
         <Text color="textSubtle" fontSize="16px">
-          {t('phoenix BNB LP')}
+          {t('CAKE BNB LP')}
         </Text>
-        <Text textAlign="right">{phoenixBnbLpBalance.toFormat(3)}</Text>
+        <Text textAlign="right">{cakeBnbLpBalance.toFormat(3)}</Text>
       </Flex>
     </ModalInner>
   )

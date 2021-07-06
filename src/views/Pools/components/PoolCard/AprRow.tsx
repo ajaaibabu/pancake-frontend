@@ -1,5 +1,5 @@
 import React from 'react'
-import { Flex, TooltipText, IconButton, useModal, CalculateIcon, Skeleton, useTooltip } from '@panphoenixswap/uikit'
+import { Flex, TooltipText, IconButton, useModal, CalculateIcon, Skeleton, useTooltip } from '@pancakeswap/uikit'
 import { useTranslation } from 'contexts/Localization'
 import Balance from 'components/Balance'
 import ApyCalculatorModal from 'components/ApyCalculatorModal'
@@ -17,7 +17,7 @@ const AprRow: React.FC<AprRowProps> = ({ pool, performanceFee = 0 }) => {
   const { stakingToken, earningToken, isFinished, apr, earningTokenPrice, isAutoVault } = pool
 
   const tooltipContent = isAutoVault
-    ? t('APY includes compounding, APR doesn’t. This pool’s phoenix is compounded automatically, so we show APY.')
+    ? t('APY includes compounding, APR doesn’t. This pool’s CAKE is compounded automatically, so we show APY.')
     : t('This pool’s rewards aren’t compounded automatically, so we show APR')
 
   const { targetRef, tooltip, tooltipVisible } = useTooltip(tooltipContent, { placement: 'bottom-start' })

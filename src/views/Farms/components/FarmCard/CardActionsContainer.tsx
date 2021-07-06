@@ -1,7 +1,7 @@
 import React, { useState, useCallback } from 'react'
 import styled from 'styled-components'
 import BigNumber from 'bignumber.js'
-import { Button, Flex, Text } from '@panphoenixswap/uikit'
+import { Button, Flex, Text } from '@pancakeswap/uikit'
 import { getAddress } from 'utils/addressHelpers'
 import { useAppDispatch } from 'state'
 import { fetchFarmUserDataAsync } from 'state/farms'
@@ -79,7 +79,7 @@ const CardActions: React.FC<FarmCardActionsProps> = ({ farm, account, addLiquidi
     <Action>
       <Flex>
         <Text bold textTransform="uppercase" color="secondary" fontSize="12px" pr="4px">
-          phoenix
+          CAKE
         </Text>
         <Text bold textTransform="uppercase" color="textSubtle" fontSize="12px">
           {t('Earned')}

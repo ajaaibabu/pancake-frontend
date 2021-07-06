@@ -11,11 +11,11 @@ import {
   CrownIcon,
   TrophyGoldIcon,
   TeamPlayerIcon,
-} from '@panphoenixswap/uikit'
+} from '@pancakeswap/uikit'
 import { useTranslation } from 'contexts/Localization'
 import { useTradingCompetitionContract } from 'hooks/useContract'
 import useToast from 'hooks/useToast'
-import { useCompetitionphoenixRewards, getRewardGroupAchievements } from '../../helpers'
+import { useCompetitionCakeRewards, getRewardGroupAchievements } from '../../helpers'
 import { CompetitionProps } from '../../types'
 import NftBunnies from '../../pngs/syrup-nft.png'
 
@@ -34,8 +34,8 @@ const ClaimModal: React.FC<CompetitionProps> = ({ onDismiss, onClaimSuccess, use
   const { toastSuccess, toastError } = useToast()
   const { t } = useTranslation()
 
-  const { userRewardGroup, userphoenixRewards, userPointReward, canClaimNFT } = userTradingInformation
-  const { phoenixReward } = useCompetitionphoenixRewards(userphoenixRewards)
+  const { userRewardGroup, userCakeRewards, userPointReward, canClaimNFT } = userTradingInformation
+  const { cakeReward } = useCompetitionCakeRewards(userCakeRewards)
   const { champion, teamPlayer } = getRewardGroupAchievements(userRewardGroup)
 
   const handleClaimClick = async () => {
@@ -67,9 +67,9 @@ const ClaimModal: React.FC<CompetitionProps> = ({ onDismiss, onClaimSuccess, use
             +{userPointReward} {t('Points')}
           </Text>
         </Flex>
-        {/* phoenix */}
+        {/* cake */}
         <Heading mt="16px" scale="md" mb={canClaimNFT ? '16px' : '0px'}>
-          {phoenixReward.toFixed(2)} phoenix
+          {cakeReward.toFixed(2)} CAKE
         </Heading>
         {/* NFT */}
         {canClaimNFT ? (

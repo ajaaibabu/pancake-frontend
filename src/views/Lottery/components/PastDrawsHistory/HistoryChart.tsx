@@ -1,6 +1,6 @@
 import React, { lazy, Suspense, useContext, useMemo } from 'react'
 import styled from 'styled-components'
-import { Flex, Text } from '@panphoenixswap/uikit'
+import { Flex, Text } from '@pancakeswap/uikit'
 import PastLotteryDataContext from 'contexts/PastLotteryDataContext'
 import { useTranslation } from 'contexts/Localization'
 import useTheme from 'hooks/useTheme'
@@ -105,7 +105,7 @@ const HistoryChart: React.FC<HistoryChartProps> = ({ showLast }) => {
             return `${t('Round #%num%', { num: tooltipItem[0].label })}`
           },
           label: (tooltipItem) => {
-            return ` ${tooltipItem.yLabel.toLocaleString()} phoenix`
+            return ` ${tooltipItem.yLabel.toLocaleString()} CAKE`
           },
           labelColor: (tooltipItem, chart) => {
             return {

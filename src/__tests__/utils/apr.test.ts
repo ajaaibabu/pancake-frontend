@@ -23,28 +23,28 @@ describe('getPoolApr', () => {
 
 describe('getFarmApr', () => {
   it(`returns null when parameters are missing`, () => {
-    const { phoenixRewardsApr, lpRewardsApr } = getFarmApr(null, null, null, null)
-    expect(phoenixRewardsApr).toBeNull()
+    const { cakeRewardsApr, lpRewardsApr } = getFarmApr(null, null, null, null)
+    expect(cakeRewardsApr).toBeNull()
     expect(lpRewardsApr).toEqual(0)
   })
   it(`returns null when APR is infinite`, () => {
-    const { phoenixRewardsApr, lpRewardsApr } = getFarmApr(BIG_ZERO, BIG_ZERO, BIG_ZERO, '')
-    expect(phoenixRewardsApr).toBeNull()
+    const { cakeRewardsApr, lpRewardsApr } = getFarmApr(BIG_ZERO, BIG_ZERO, BIG_ZERO, '')
+    expect(cakeRewardsApr).toBeNull()
     expect(lpRewardsApr).toEqual(0)
   })
   it(`get the correct pool APR`, () => {
-    const { phoenixRewardsApr, lpRewardsApr } = getFarmApr(BIG_TEN, new BigNumber(1), new BigNumber(100000), '')
-    expect(phoenixRewardsApr).toEqual(4204800)
+    const { cakeRewardsApr, lpRewardsApr } = getFarmApr(BIG_TEN, new BigNumber(1), new BigNumber(100000), '')
+    expect(cakeRewardsApr).toEqual(4204800)
     expect(lpRewardsApr).toEqual(0)
   })
   it(`get the correct pool APR combined with LP APR`, () => {
-    const { phoenixRewardsApr, lpRewardsApr } = getFarmApr(
+    const { cakeRewardsApr, lpRewardsApr } = getFarmApr(
       BIG_TEN,
       new BigNumber(1),
       new BigNumber(100000),
       '0x0ed7e52944161450477ee417de9cd3a859b14fd0',
     )
-    expect(phoenixRewardsApr).toEqual(4204800)
+    expect(cakeRewardsApr).toEqual(4204800)
     expect(lpRewardsApr).toEqual(10.5)
   })
 })

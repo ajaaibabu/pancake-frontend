@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Flex, FlexProps } from '@panphoenixswap/uikit'
+import { Flex, FlexProps } from '@pancakeswap/uikit'
 import Container from 'components/layout/Container'
 import CurvedDivider from './CurvedDivider'
 

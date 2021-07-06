@@ -1,19 +1,19 @@
 import { useCallback, useState } from 'react'
 import { ethers } from 'ethers'
-import { usephoenix, useLottery } from 'hooks/useContract'
+import { useCake, useLottery } from 'hooks/useContract'
 
 const useLotteryApprove = () => {
-  const phoenixContract = usephoenix()
+  const cakeContract = useCake()
   const lotteryContract = useLottery()
 
   const handleApprove = useCallback(async () => {
     try {
-      const tx = await phoenixContract.approve(lotteryContract.address, ethers.constants.MaxUint256)
+      const tx = await cakeContract.approve(lotteryContract.address, ethers.constants.MaxUint256)
       return tx
     } catch (e) {
       return false
     }
-  }, [phoenixContract, lotteryContract])
+  }, [cakeContract, lotteryContract])
 
   return { onApprove: handleApprove }
 }

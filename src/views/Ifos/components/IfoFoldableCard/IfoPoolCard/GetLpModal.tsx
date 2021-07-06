@@ -1,5 +1,5 @@
 import React from 'react'
-import { Modal, ModalBody, Text, Image, Button, Link, OpenNewIcon } from '@panphoenixswap/uikit'
+import { Modal, ModalBody, Text, Image, Button, Link, OpenNewIcon } from '@pancakeswap/uikit'
 import { BASE_ADD_LIQUIDITY_URL } from 'config'
 import { Token } from 'config/constants/types'
 import { useTranslation } from 'contexts/Localization'
@@ -21,7 +21,7 @@ const GetLpModal: React.FC<Partial<Props>> = ({ currency, onDismiss }) => {
           margin="auto"
           mb="24px"
         />
-        <Text mb="16px">{t('You’ll need phoenix-BNB LP tokens to participate in the IFO!')}</Text>
+        <Text mb="16px">{t('You’ll need CAKE-BNB LP tokens to participate in the IFO!')}</Text>
         <Text mb="24px">{t('Get LP tokens, or make sure your tokens aren’t staked somewhere else.')}</Text>
         <Button
           as={Link}

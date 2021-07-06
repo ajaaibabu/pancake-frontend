@@ -15,11 +15,11 @@ import {
   Button,
   Link,
   HelpIcon,
-} from '@panphoenixswap/uikit'
+} from '@pancakeswap/uikit'
 import { BASE_BSC_SCAN_URL, BASE_URL } from 'config'
-import { useBlock, usephoenixVault } from 'state/hooks'
+import { useBlock, useCakeVault } from 'state/hooks'
 import { Pool } from 'state/types'
-import { getAddress, getphoenixVaultAddress } from 'utils/addressHelpers'
+import { getAddress, getCakeVaultAddress } from 'utils/addressHelpers'
 import { registerToken } from 'utils/wallet'
 import { getBscScanBlockCountdownUrl } from 'utils/bscscan'
 import Balance from 'components/Balance'
@@ -41,9 +41,9 @@ const ExpandedFooter: React.FC<ExpandedFooterProps> = ({ pool, account }) => {
   const { t } = useTranslation()
   const { currentBlock } = useBlock()
   const {
-    totalphoenixInVault,
+    totalCakeInVault,
     fees: { performanceFee },
-  } = usephoenixVault()
+  } = useCakeVault()
 
   const {
     stakingToken,
@@ -59,10 +59,10 @@ const ExpandedFooter: React.FC<ExpandedFooterProps> = ({ pool, account }) => {
 
   const tokenAddress = earningToken.address ? getAddress(earningToken.address) : ''
   const poolContractAddress = getAddress(contractAddress)
-  const phoenixVaultContractAddress = getphoenixVaultAddress()
+  const cakeVaultContractAddress = getCakeVaultAddress()
   const imageSrc = `${BASE_URL}/images/tokens/${tokenAddress}.png`
   const isMetaMaskInScope = !!window.ethereum?.isMetaMask
-  const isManualphoenixPool = sousId === 0
+  const isManualCakePool = sousId === 0
 
   const { shouldShowBlockCountdown, blocksUntilStart, blocksRemaining, hasPoolStarted, blocksToDisplay } =
     getPoolBlockInfo(pool, currentBlock)
@@ -74,11 +74,11 @@ const ExpandedFooter: React.FC<ExpandedFooterProps> = ({ pool, account }) => {
 
   const getTotalStakedBalance = () => {
     if (isAutoVault) {
-      return getBalanceNumber(totalphoenixInVault, stakingToken.decimals)
+      return getBalanceNumber(totalCakeInVault, stakingToken.decimals)
     }
-    if (isManualphoenixPool) {
-      const manualphoenixTotalMinusAutoVault = new BigNumber(totalStaked).minus(totalphoenixInVault)
-      return getBalanceNumber(manualphoenixTotalMinusAutoVault, stakingToken.decimals)
+    if (isManualCakePool) {
+      const manualCakeTotalMinusAutoVault = new BigNumber(totalStaked).minus(totalCakeInVault)
+      return getBalanceNumber(manualCakeTotalMinusAutoVault, stakingToken.decimals)
     }
     return getBalanceNumber(totalStaked, stakingToken.decimals)
   }
@@ -147,7 +147,7 @@ const ExpandedFooter: React.FC<ExpandedFooterProps> = ({ pool, account }) => {
         </Flex>
       )}
       <Flex mb="2px" justifyContent="flex-end">
-        <LinkExternal href={`https://panphoenixswap.info/token/${getAddress(earningToken.address)}`} bold={false} small>
+        <LinkExternal href={`https://pancakeswap.info/token/${getAddress(earningToken.address)}`} bold={false} small>
           {t('See Token Info')}
         </LinkExternal>
       </Flex>
@@ -159,7 +159,7 @@ const ExpandedFooter: React.FC<ExpandedFooterProps> = ({ pool, account }) => {
       {poolContractAddress && (
         <Flex mb="2px" justifyContent="flex-end">
           <LinkExternal
-            href={`${BASE_BSC_SCAN_URL}/address/${isAutoVault ? phoenixVaultContractAddress : poolContractAddress}`}
+            href={`${BASE_BSC_SCAN_URL}/address/${isAutoVault ? cakeVaultContractAddress : poolContractAddress}`}
             bold={false}
             small
           >

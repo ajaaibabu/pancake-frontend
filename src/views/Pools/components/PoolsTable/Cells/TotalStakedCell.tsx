@@ -1,11 +1,11 @@
 import React, { useMemo } from 'react'
-import { Flex, Skeleton, Text } from '@panphoenixswap/uikit'
+import { Flex, Skeleton, Text } from '@pancakeswap/uikit'
 import styled from 'styled-components'
 import { useTranslation } from 'contexts/Localization'
 import BigNumber from 'bignumber.js'
 import Balance from 'components/Balance'
 import { Pool } from 'state/types'
-import { usephoenixVault } from 'state/hooks'
+import { useCakeVault } from 'state/hooks'
 import { getBalanceNumber } from 'utils/formatBalance'
 import BaseCell, { CellContent } from './BaseCell'
 
@@ -20,20 +20,20 @@ const StyledCell = styled(BaseCell)`
 const TotalStakedCell: React.FC<TotalStakedCellProps> = ({ pool }) => {
   const { t } = useTranslation()
   const { sousId, stakingToken, totalStaked, isAutoVault } = pool
-  const { totalphoenixInVault } = usephoenixVault()
+  const { totalCakeInVault } = useCakeVault()
 
-  const isManualphoenixPool = sousId === 0
+  const isManualCakePool = sousId === 0
 
   const totalStakedBalance = useMemo(() => {
     if (isAutoVault) {
-      return getBalanceNumber(totalphoenixInVault, stakingToken.decimals)
+      return getBalanceNumber(totalCakeInVault, stakingToken.decimals)
     }
-    if (isManualphoenixPool) {
-      const manualphoenixTotalMinusAutoVault = new BigNumber(totalStaked).minus(totalphoenixInVault)
-      return getBalanceNumber(manualphoenixTotalMinusAutoVault, stakingToken.decimals)
+    if (isManualCakePool) {
+      const manualCakeTotalMinusAutoVault = new BigNumber(totalStaked).minus(totalCakeInVault)
+      return getBalanceNumber(manualCakeTotalMinusAutoVault, stakingToken.decimals)
     }
     return getBalanceNumber(totalStaked, stakingToken.decimals)
-  }, [isAutoVault, totalphoenixInVault, isManualphoenixPool, totalStaked, stakingToken.decimals])
+  }, [isAutoVault, totalCakeInVault, isManualCakePool, totalStaked, stakingToken.decimals])
 
   return (
     <StyledCell role="cell">

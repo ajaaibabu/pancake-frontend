@@ -1,4 +1,4 @@
-import { ChainId } from '@panphoenixswap-libs/sdk'
+import { ChainId } from '@pancakeswap-libs/sdk'
 import addresses from 'config/constants/contracts'
 import tokens from 'config/constants/tokens'
 import { Address } from 'config/constants/types'
@@ -8,8 +8,8 @@ export const getAddress = (address: Address): string => {
   return address[chainId] ? address[chainId] : address[ChainId.MAINNET]
 }
 
-export const getphoenixAddress = () => {
-  return getAddress(tokens.phoenix.address)
+export const getCakeAddress = () => {
+  return getAddress(tokens.cake.address)
 }
 export const getMasterChefAddress = () => {
   return getAddress(addresses.masterChef)
@@ -29,11 +29,11 @@ export const getLotteryTicketAddress = () => {
 export const getLotteryV2Address = () => {
   return getAddress(addresses.lotteryV2)
 }
-export const getPanphoenixProfileAddress = () => {
-  return getAddress(addresses.panphoenixProfile)
+export const getPancakeProfileAddress = () => {
+  return getAddress(addresses.pancakeProfile)
 }
-export const getPanphoenixRabbitsAddress = () => {
-  return getAddress(addresses.panphoenixRabbits)
+export const getPancakeRabbitsAddress = () => {
+  return getAddress(addresses.pancakeRabbits)
 }
 export const getBunnyFactoryAddress = () => {
   return getAddress(addresses.bunnyFactory)
@@ -53,8 +53,8 @@ export const getTradingCompetitionAddress = () => {
 export const getEasterNftAddress = () => {
   return getAddress(addresses.easterNft)
 }
-export const getphoenixVaultAddress = () => {
-  return getAddress(addresses.phoenixVault)
+export const getCakeVaultAddress = () => {
+  return getAddress(addresses.cakeVault)
 }
 export const getPredictionsAddress = () => {
   return getAddress(addresses.predictions)
@@ -62,8 +62,8 @@ export const getPredictionsAddress = () => {
 export const getChainlinkOracleAddress = () => {
   return getAddress(addresses.chainlinkOracle)
 }
-export const getBunnySpecialphoenixVaultAddress = () => {
-  return getAddress(addresses.bunnySpecialphoenixVault)
+export const getBunnySpecialCakeVaultAddress = () => {
+  return getAddress(addresses.bunnySpecialCakeVault)
 }
 export const getBunnySpecialPredictionAddress = () => {
   return getAddress(addresses.bunnySpecialPrediction)

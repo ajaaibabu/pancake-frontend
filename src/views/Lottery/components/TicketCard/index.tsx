@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Card, CardBody, TicketRound, Text, Heading } from '@panphoenixswap/uikit'
+import { Card, CardBody, TicketRound, Text, Heading } from '@pancakeswap/uikit'
 import { useTranslation } from 'contexts/Localization'
 import useGetLotteryHasDrawn from 'views/Lottery/hooks/useGetLotteryHasDrawn'
 import useTickets from 'views/Lottery/hooks/useTickets'

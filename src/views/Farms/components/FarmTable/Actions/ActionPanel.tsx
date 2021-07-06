@@ -1,7 +1,7 @@
 import React from 'react'
 import styled, { keyframes, css } from 'styled-components'
 import { useTranslation } from 'contexts/Localization'
-import { LinkExternal, Text } from '@panphoenixswap/uikit'
+import { LinkExternal, Text } from '@pancakeswap/uikit'
 import { FarmWithStakedValue } from 'views/Farms/components/FarmCard/FarmCard'
 import getLiquidityUrlPathParts from 'utils/getLiquidityUrlPathParts'
 import { getBscScanAddressUrl } from 'utils/bscscan'
@@ -142,21 +142,21 @@ const ActionPanel: React.FunctionComponent<ActionPanelProps> = ({
   const { t } = useTranslation()
   const isActive = farm.multiplier !== '0X'
   const { quoteToken, token, dual } = farm
-  const lpLabel = farm.lpSymbol && farm.lpSymbol.toUpperCase().replace('PANphoenix', '')
+  const lpLabel = farm.lpSymbol && farm.lpSymbol.toUpperCase().replace('PANCAKE', '')
   const liquidityUrlPathParts = getLiquidityUrlPathParts({
     quoteTokenAddress: quoteToken.address,
     tokenAddress: token.address,
   })
   const lpAddress = farm.lpAddresses[process.env.REACT_APP_CHAIN_ID]
   const bsc = getBscScanAddressUrl(lpAddress)
-  const info = `https://panphoenixswap.info/pool/${lpAddress}`
+  const info = `https://pancakeswap.info/pool/${lpAddress}`
 
   return (
     <Container expanded={expanded}>
       <InfoContainer>
         {isActive && (
           <StakeContainer>
-            <StyledLinkExternal href={`https://exchange.panphoenixswap.finance/#/add/${liquidityUrlPathParts}`}>
+            <StyledLinkExternal href={`https://exchange.pancakeswap.finance/#/add/${liquidityUrlPathParts}`}>
               {t('Get %symbol%', { symbol: lpLabel })}
             </StyledLinkExternal>
           </StakeContainer>

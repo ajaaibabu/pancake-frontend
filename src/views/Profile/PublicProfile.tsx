@@ -15,7 +15,7 @@ import {
   BlockIcon,
   VisibilityOn,
   VisibilityOff,
-} from '@panphoenixswap/uikit'
+} from '@pancakeswap/uikit'
 import { useTranslation } from 'contexts/Localization'
 import { useProfile } from 'state/hooks'
 import usePersistState from 'hooks/usePersistState'

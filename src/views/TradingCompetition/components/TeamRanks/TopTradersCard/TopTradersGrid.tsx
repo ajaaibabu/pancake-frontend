@@ -1,10 +1,10 @@
 import React from 'react'
-import { Box, Skeleton } from '@panphoenixswap/uikit'
+import { Box, Skeleton } from '@pancakeswap/uikit'
 import styled from 'styled-components'
 import { LeaderboardDataItem } from '../../../types'
 import GridItem from './GridItem'
 import ExpandedGridItem from './ExpandedGridItem'
-import { LeaderboardStorm, LeaderboardFlippers, Leaderboardphoenixrs } from '../../../svgs'
+import { LeaderboardStorm, LeaderboardFlippers, LeaderboardCakers } from '../../../svgs'
 
 const SkeletonLoader = () => {
   return (
@@ -39,7 +39,7 @@ const ExpandedWrapper = styled.div`
 const TopTradersGrid: React.FC<{ data?: LeaderboardDataItem[]; isExpanded: boolean }> = ({ data, isExpanded }) => {
   const topFive = data && data.slice(0, 5)
   const nextTwenty = data && data.slice(5, 20)
-  const teamImages = [<LeaderboardStorm />, <LeaderboardFlippers />, <Leaderboardphoenixrs />]
+  const teamImages = [<LeaderboardStorm />, <LeaderboardFlippers />, <LeaderboardCakers />]
 
   return (
     <Box>

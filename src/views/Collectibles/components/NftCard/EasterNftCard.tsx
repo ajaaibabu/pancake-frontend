@@ -12,7 +12,7 @@ import NftCard, { NftCardProps } from './index'
 export const teamNftMap = {
   'easter-storm': 1,
   'easter-flipper': 2,
-  'easter-phoenixr': 3,
+  'easter-caker': 3,
 }
 
 const EasterNftCard: React.FC<NftCardProps> = ({ nft, ...props }) => {

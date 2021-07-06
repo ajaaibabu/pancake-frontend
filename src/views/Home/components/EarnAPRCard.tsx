@@ -1,13 +1,13 @@
 import React, { useEffect, useMemo, useState } from 'react'
 import styled from 'styled-components'
-import { Heading, Card, CardBody, Flex, ArrowForwardIcon, Skeleton } from '@panphoenixswap/uikit'
-import { ChainId } from '@panphoenixswap-libs/sdk'
+import { Heading, Card, CardBody, Flex, ArrowForwardIcon, Skeleton } from '@pancakeswap/uikit'
+import { ChainId } from '@pancakeswap-libs/sdk'
 import max from 'lodash/max'
 import { NavLink } from 'react-router-dom'
 import BigNumber from 'bignumber.js'
 import { useTranslation } from 'contexts/Localization'
 import { useAppDispatch } from 'state'
-import { useFarms, usePricephoenixBusd } from 'state/hooks'
+import { useFarms, usePriceCakeBusd } from 'state/hooks'
 import { fetchFarmsPublicDataAsync, nonArchivedFarms } from 'state/farms'
 import { getFarmApr } from 'utils/apr'
 import useIntersectionObserver from 'hooks/useIntersectionObserver'
@@ -34,7 +34,7 @@ const EarnAPRCard = () => {
   const [isFetchingFarmData, setIsFetchingFarmData] = useState(true)
   const { t } = useTranslation()
   const { data: farmsLP } = useFarms()
-  const phoenixPrice = usePricephoenixBusd()
+  const cakePrice = usePriceCakeBusd()
   const dispatch = useAppDispatch()
   const { observerRef, isIntersecting } = useIntersectionObserver()
 
@@ -54,18 +54,18 @@ const EarnAPRCard = () => {
   }, [dispatch, setIsFetchingFarmData, isIntersecting])
 
   const highestApr = useMemo(() => {
-    if (phoenixPrice.gt(0)) {
+    if (cakePrice.gt(0)) {
       const aprs = farmsLP.map((farm) => {
         // Filter inactive farms, because their theoretical APR is super high. In practice, it's 0.
         if (farm.pid !== 0 && farm.multiplier !== '0X' && farm.lpTotalInQuoteToken && farm.quoteToken.busdPrice) {
           const totalLiquidity = new BigNumber(farm.lpTotalInQuoteToken).times(farm.quoteToken.busdPrice)
-          const { phoenixRewardsApr, lpRewardsApr } = getFarmApr(
+          const { cakeRewardsApr, lpRewardsApr } = getFarmApr(
             new BigNumber(farm.poolWeight),
-            phoenixPrice,
+            cakePrice,
             totalLiquidity,
             farm.lpAddresses[ChainId.MAINNET],
           )
-          return phoenixRewardsApr + lpRewardsApr
+          return cakeRewardsApr + lpRewardsApr
         }
         return null
       })
@@ -74,7 +74,7 @@ const EarnAPRCard = () => {
       return maxApr?.toLocaleString('en-US', { maximumFractionDigits: 2 })
     }
     return null
-  }, [phoenixPrice, farmsLP])
+  }, [cakePrice, farmsLP])
 
   const aprText = highestApr || '-'
   const earnAprText = t('Earn up to %highestApr% APR in Farms', { highestApr: aprText })

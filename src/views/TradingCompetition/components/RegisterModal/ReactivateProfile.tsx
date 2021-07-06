@@ -1,5 +1,5 @@
 import React from 'react'
-import { Heading, Button, Text } from '@panphoenixswap/uikit'
+import { Heading, Button, Text } from '@pancakeswap/uikit'
 import history from 'routerHistory'
 import { useTranslation } from 'contexts/Localization'
 import { CompetitionProps } from 'views/TradingCompetition/types'
@@ -18,7 +18,7 @@ const ReactivateProfile: React.FC<CompetitionProps> = ({ onDismiss }) => {
         {t('Reactivate your profile!')}
       </Heading>
       <Text color="textSubtle">
-        {t('It looks like you’ve disabled your account by removing your Panphoenix Collectible (NFT) profile picture.')}
+        {t('It looks like you’ve disabled your account by removing your Pancake Collectible (NFT) profile picture.')}
       </Text>
       <Text>
         {t('You need to reactivate your profile by replacing your profile picture in order to join the competition.')}

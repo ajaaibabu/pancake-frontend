@@ -6,11 +6,11 @@ import { PoolCategory } from 'config/constants/types'
 // Addresses
 import {
   getAddress,
-  getPanphoenixProfileAddress,
-  getPanphoenixRabbitsAddress,
+  getPancakeProfileAddress,
+  getPancakeRabbitsAddress,
   getBunnyFactoryAddress,
   getBunnySpecialAddress,
-  getphoenixAddress,
+  getCakeAddress,
   getLotteryAddress,
   getLotteryTicketAddress,
   getLotteryV2Address,
@@ -19,23 +19,23 @@ import {
   getClaimRefundAddress,
   getTradingCompetitionAddress,
   getEasterNftAddress,
-  getphoenixVaultAddress,
+  getCakeVaultAddress,
   getPredictionsAddress,
   getChainlinkOracleAddress,
   getMulticallAddress,
-  getBunnySpecialphoenixVaultAddress,
+  getBunnySpecialCakeVaultAddress,
   getBunnySpecialPredictionAddress,
 } from 'utils/addressHelpers'
 
 // ABI
-import profileABI from 'config/abi/panphoenixProfile.json'
-import panphoenixRabbitsAbi from 'config/abi/panphoenixRabbits.json'
+import profileABI from 'config/abi/pancakeProfile.json'
+import pancakeRabbitsAbi from 'config/abi/pancakeRabbits.json'
 import bunnyFactoryAbi from 'config/abi/bunnyFactory.json'
 import bunnySpecialAbi from 'config/abi/bunnySpecial.json'
 import bep20Abi from 'config/abi/erc20.json'
 import erc721Abi from 'config/abi/erc721.json'
 import lpTokenAbi from 'config/abi/lpToken.json'
-import phoenixAbi from 'config/abi/phoenix.json'
+import cakeAbi from 'config/abi/cake.json'
 import ifoV1Abi from 'config/abi/ifoV1.json'
 import ifoV2Abi from 'config/abi/ifoV2.json'
 import pointCenterIfo from 'config/abi/pointCenterIfo.json'
@@ -49,11 +49,11 @@ import sousChefBnb from 'config/abi/sousChefBnb.json'
 import claimRefundAbi from 'config/abi/claimRefund.json'
 import tradingCompetitionAbi from 'config/abi/tradingCompetition.json'
 import easterNftAbi from 'config/abi/easterNft.json'
-import phoenixVaultAbi from 'config/abi/phoenixVault.json'
+import cakeVaultAbi from 'config/abi/cakeVault.json'
 import predictionsAbi from 'config/abi/predictions.json'
 import chainlinkOracleAbi from 'config/abi/chainlinkOracle.json'
 import MultiCallAbi from 'config/abi/Multicall.json'
-import bunnySpecialphoenixVaultAbi from 'config/abi/bunnySpecialphoenixVault.json'
+import bunnySpecialCakeVaultAbi from 'config/abi/bunnySpecialCakeVault.json'
 import bunnySpecialPredictionAbi from 'config/abi/bunnySpecialPrediction.json'
 
 const getContract = (abi: any, address: string, signer?: ethers.Signer | ethers.providers.Provider) => {
@@ -88,14 +88,14 @@ export const getSouschefV2Contract = (id: number, signer?: ethers.Signer | ether
 export const getPointCenterIfoContract = (signer?: ethers.Signer | ethers.providers.Provider) => {
   return getContract(pointCenterIfo, getPointCenterIfoAddress(), signer)
 }
-export const getphoenixContract = (signer?: ethers.Signer | ethers.providers.Provider) => {
-  return getContract(phoenixAbi, getphoenixAddress(), signer)
+export const getCakeContract = (signer?: ethers.Signer | ethers.providers.Provider) => {
+  return getContract(cakeAbi, getCakeAddress(), signer)
 }
 export const getProfileContract = (signer?: ethers.Signer | ethers.providers.Provider) => {
-  return getContract(profileABI, getPanphoenixProfileAddress(), signer)
+  return getContract(profileABI, getPancakeProfileAddress(), signer)
 }
-export const getPanphoenixRabbitContract = (signer?: ethers.Signer | ethers.providers.Provider) => {
-  return getContract(panphoenixRabbitsAbi, getPanphoenixRabbitsAddress(), signer)
+export const getPancakeRabbitContract = (signer?: ethers.Signer | ethers.providers.Provider) => {
+  return getContract(pancakeRabbitsAbi, getPancakeRabbitsAddress(), signer)
 }
 export const getBunnyFactoryContract = (signer?: ethers.Signer | ethers.providers.Provider) => {
   return getContract(bunnyFactoryAbi, getBunnyFactoryAddress(), signer)
@@ -124,8 +124,8 @@ export const getTradingCompetitionContract = (signer?: ethers.Signer | ethers.pr
 export const getEasterNftContract = (signer?: ethers.Signer | ethers.providers.Provider) => {
   return getContract(easterNftAbi, getEasterNftAddress(), signer)
 }
-export const getphoenixVaultContract = (signer?: ethers.Signer | ethers.providers.Provider) => {
-  return getContract(phoenixVaultAbi, getphoenixVaultAddress(), signer)
+export const getCakeVaultContract = (signer?: ethers.Signer | ethers.providers.Provider) => {
+  return getContract(cakeVaultAbi, getCakeVaultAddress(), signer)
 }
 export const getPredictionsContract = (signer?: ethers.Signer | ethers.providers.Provider) => {
   return getContract(predictionsAbi, getPredictionsAddress(), signer)
@@ -136,8 +136,8 @@ export const getChainlinkOracleContract = (signer?: ethers.Signer | ethers.provi
 export const getMulticallContract = (signer?: ethers.Signer | ethers.providers.Provider) => {
   return getContract(MultiCallAbi, getMulticallAddress(), signer)
 }
-export const getBunnySpecialphoenixVaultContract = (signer?: ethers.Signer | ethers.providers.Provider) => {
-  return getContract(bunnySpecialphoenixVaultAbi, getBunnySpecialphoenixVaultAddress(), signer)
+export const getBunnySpecialCakeVaultContract = (signer?: ethers.Signer | ethers.providers.Provider) => {
+  return getContract(bunnySpecialCakeVaultAbi, getBunnySpecialCakeVaultAddress(), signer)
 }
 export const getBunnySpecialPredictionContract = (signer?: ethers.Signer | ethers.providers.Provider) => {
   return getContract(bunnySpecialPredictionAbi, getBunnySpecialPredictionAddress(), signer)

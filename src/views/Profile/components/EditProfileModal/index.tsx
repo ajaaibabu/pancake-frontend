@@ -1,11 +1,11 @@
 import React from 'react'
-import { InjectedModalProps, Modal } from '@panphoenixswap/uikit'
+import { InjectedModalProps, Modal } from '@pancakeswap/uikit'
 import { useTranslation } from 'contexts/Localization'
 import useEditProfile, { Views } from './reducer'
 import StartView from './StartView'
 import PauseProfileView from './PauseProfileView'
 import ChangeProfilePicView from './ChangeProfilePicView'
-import ApprovephoenixView from './ApprovephoenixView'
+import ApproveCakeView from './ApproveCakeView'
 
 type EditProfileModalProps = InjectedModalProps
 
@@ -13,7 +13,7 @@ const viewTitle = {
   [Views.START]: 'Edit Profile',
   [Views.CHANGE]: 'Change Profile Pic',
   [Views.REMOVE]: 'Remove Profile Pic',
-  [Views.APPROVE]: 'Approve phoenix',
+  [Views.APPROVE]: 'Approve CAKE',
 }
 
 const EditProfileModal: React.FC<EditProfileModalProps> = ({ onDismiss }) => {
@@ -32,7 +32,7 @@ const EditProfileModal: React.FC<EditProfileModalProps> = ({ onDismiss }) => {
         )}
         {currentView === Views.REMOVE && <PauseProfileView onDismiss={onDismiss} />}
         {currentView === Views.CHANGE && <ChangeProfilePicView onDismiss={onDismiss} />}
-        {currentView === Views.APPROVE && <ApprovephoenixView goToChange={goToChange} onDismiss={onDismiss} />}
+        {currentView === Views.APPROVE && <ApproveCakeView goToChange={goToChange} onDismiss={onDismiss} />}
       </div>
     </Modal>
   )

@@ -1,17 +1,17 @@
 import BigNumber from 'bignumber.js'
-import { getphoenixVaultContract } from 'utils/contractHelpers'
+import { getCakeVaultContract } from 'utils/contractHelpers'
 
-const phoenixVaultContract = getphoenixVaultContract()
+const cakeVaultContract = getCakeVaultContract()
 
 const fetchVaultUser = async (account: string) => {
   try {
-    const userContractResponse = await phoenixVaultContract.userInfo(account)
+    const userContractResponse = await cakeVaultContract.userInfo(account)
     return {
       isLoading: false,
       userShares: new BigNumber(userContractResponse.shares.toString()).toJSON(),
       lastDepositedTime: userContractResponse.lastDepositedTime.toString(),
       lastUserActionTime: userContractResponse.lastUserActionTime.toString(),
-      phoenixAtLastUserAction: new BigNumber(userContractResponse.phoenixAtLastUserAction.toString()).toJSON(),
+      cakeAtLastUserAction: new BigNumber(userContractResponse.cakeAtLastUserAction.toString()).toJSON(),
     }
   } catch (error) {
     return {
@@ -19,7 +19,7 @@ const fetchVaultUser = async (account: string) => {
       userShares: null,
       lastDepositedTime: null,
       lastUserActionTime: null,
-      phoenixAtLastUserAction: null,
+      cakeAtLastUserAction: null,
     }
   }
 }

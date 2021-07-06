@@ -2,8 +2,8 @@
   {
     "inputs": [
       {
-        "internalType": "contract phoenixToken",
-        "name": "_phoenix",
+        "internalType": "contract CakeToken",
+        "name": "_cake",
         "type": "address"
       },
       {
@@ -18,7 +18,7 @@
       },
       {
         "internalType": "uint256",
-        "name": "_phoenixPerBlock",
+        "name": "_cakePerBlock",
         "type": "uint256"
       },
       {
@@ -162,10 +162,10 @@
   },
   {
     "inputs": [],
-    "name": "phoenix",
+    "name": "cake",
     "outputs": [
       {
-        "internalType": "contract phoenixToken",
+        "internalType": "contract CakeToken",
         "name": "",
         "type": "address"
       }
@@ -175,7 +175,7 @@
   },
   {
     "inputs": [],
-    "name": "phoenixPerBlock",
+    "name": "cakePerBlock",
     "outputs": [
       {
         "internalType": "uint256",
@@ -352,7 +352,7 @@
         "type": "address"
       }
     ],
-    "name": "pendingphoenix",
+    "name": "pendingCake",
     "outputs": [
       {
         "internalType": "uint256",
@@ -390,7 +390,7 @@
       },
       {
         "internalType": "uint256",
-        "name": "accphoenixPerShare",
+        "name": "accCakePerShare",
         "type": "uint256"
       }
     ],

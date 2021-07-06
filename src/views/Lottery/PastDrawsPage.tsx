@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { BaseLayout } from '@panphoenixswap/uikit'
+import { BaseLayout } from '@pancakeswap/uikit'
 import PastLotteryRoundViewer from './components/PastLotteryRoundViewer'
 import PastDrawsHistoryCard from './components/PastDrawsHistory/PastDrawsHistoryCard'
 import ClaimPrizesCard from './components/ClaimPrizesCard'
@@ -46,7 +46,7 @@ const PastDrawsPage: React.FC = () => {
         <SecondCardColumnWrapper>
           <PastDrawsHistoryCard />
           <BunnyImageWrapper>
-            <img src="/images/panphoenix-lottery-bunny.png" alt="lottery bunny" />
+            <img src="/images/pancake-lottery-bunny.png" alt="lottery bunny" />
           </BunnyImageWrapper>
         </SecondCardColumnWrapper>
       </Cards>

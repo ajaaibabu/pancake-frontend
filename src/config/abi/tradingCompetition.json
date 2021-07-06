@@ -3,7 +3,7 @@
     "inputs": [
       {
         "internalType": "address",
-        "name": "_panphoenixProfileAddress",
+        "name": "_pancakeProfileAddress",
         "type": "address"
       },
       {
@@ -13,7 +13,7 @@
       },
       {
         "internalType": "address",
-        "name": "_phoenixTokenAddress",
+        "name": "_cakeTokenAddress",
         "type": "address"
       }
     ],
@@ -144,7 +144,7 @@
   },
   {
     "inputs": [],
-    "name": "phoenixToken",
+    "name": "cakeToken",
     "outputs": [
       {
         "internalType": "contract IBEP20",
@@ -260,10 +260,10 @@
   },
   {
     "inputs": [],
-    "name": "panphoenixProfile",
+    "name": "pancakeProfile",
     "outputs": [
       {
-        "internalType": "contract IPanphoenixProfile",
+        "internalType": "contract IPancakeProfile",
         "name": "",
         "type": "address"
       }
@@ -338,7 +338,7 @@
       },
       {
         "internalType": "uint256[5]",
-        "name": "_phoenixRewards",
+        "name": "_cakeRewards",
         "type": "uint256[5]"
       },
       {
@@ -440,7 +440,7 @@
           },
           {
             "internalType": "uint256[5]",
-            "name": "phoenixRewards",
+            "name": "cakeRewards",
             "type": "uint256[5]"
           },
           {

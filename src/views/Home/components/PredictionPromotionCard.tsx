@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
-import { Card, CardBody, ArrowForwardIcon, Link, Button, Text, Skeleton, Flex } from '@panphoenixswap/uikit'
+import { Card, CardBody, ArrowForwardIcon, Link, Button, Text, Skeleton, Flex } from '@pancakeswap/uikit'
 import { useTranslation } from 'contexts/Localization'
 import { getTotalWon } from 'state/predictions/helpers'
 import { usePriceBnbBusd } from 'state/hooks'
@@ -135,7 +135,7 @@ const PredictionPromotionCard = () => {
         <Text color="textSubtle" mb="24px">
           *{t('Beta Version')}
         </Text>
-        <Link href="https://panphoenixswap.finance/prediction" id="homepage-prediction-cta">
+        <Link href="https://pancakeswap.finance/prediction" id="homepage-prediction-cta">
           <Button px={['14px', null, null, null, '20px']}>
             <PredictionTryNow>
               <Text color="white" bold fontSize="16px">

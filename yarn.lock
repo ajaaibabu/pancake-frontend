@@ -2019,9 +2019,9 @@
     mkdirp "^1.0.4"
     rimraf "^3.0.2"
 
-"@panphoenixswap-libs/sdk@^1.0.1":
+"@pancakeswap-libs/sdk@^1.0.1":
   version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@panphoenixswap-libs/sdk/-/sdk-1.0.1.tgz#602e6da34fd5bde0f3c869f9abe63bb5f4aaf063"
+  resolved "https://registry.yarnpkg.com/@pancakeswap-libs/sdk/-/sdk-1.0.1.tgz#602e6da34fd5bde0f3c869f9abe63bb5f4aaf063"
   integrity sha512-N4EZlAD0PD7lgVEE8jOufUPRNBvcR3STSjBC9QVwoKmmH1czEY9lu8/SySecKchZtSi66qAfsrghkdXo8tnJsg==
   dependencies:
     "@uniswap/v2-core" "^1.0.0"
@@ -2032,9 +2032,9 @@
     tiny-warning "^1.0.3"
     toformat "^2.0.0"
 
-"@panphoenixswap/eslint-config-panphoenix@^1.1.0":
+"@pancakeswap/eslint-config-pancake@^1.1.0":
   version "1.1.0"
-  resolved "https://registry.yarnpkg.com/@panphoenixswap/eslint-config-panphoenix/-/eslint-config-panphoenix-1.1.0.tgz#ddb916af3726359095207306cfc87098cec43f41"
+  resolved "https://registry.yarnpkg.com/@pancakeswap/eslint-config-pancake/-/eslint-config-pancake-1.1.0.tgz#ddb916af3726359095207306cfc87098cec43f41"
   integrity sha512-TGyHaDZjXPtubV39S4vPVVRZk9FgsSyBwP6qTP1/H0+nUoKEh+RIUs/nCVxZgN7f8MbbVioLg00gVqV0XI8a7Q==
   dependencies:
     "@typescript-eslint/eslint-plugin" "^4.7.0"
@@ -2046,9 +2046,9 @@
     eslint-plugin-react "^7.21.5"
     eslint-plugin-react-hooks "^4.0.0"
 
-"@panphoenixswap/uikit@^0.39.4":
+"@pancakeswap/uikit@^0.39.4":
   version "0.39.4"
-  resolved "https://registry.yarnpkg.com/@panphoenixswap/uikit/-/uikit-0.39.4.tgz#bcb0812a5804ba647a0fc0b1b46b355038534849"
+  resolved "https://registry.yarnpkg.com/@pancakeswap/uikit/-/uikit-0.39.4.tgz#bcb0812a5804ba647a0fc0b1b46b355038534849"
   integrity sha512-fuH9SLQTB3CjlUp3m4lmVd4xBmhzQvqDBCnTsWGGUz0gjUC9d00LbWgJP4K7nMKfOukIunOxsUfnf5/gMNOmVw==
   dependencies:
     "@popperjs/core" "^2.9.2"

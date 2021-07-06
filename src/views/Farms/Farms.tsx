@@ -2,12 +2,12 @@ import React, { useEffect, useCallback, useState, useMemo, useRef } from 'react'
 import { Route, useRouteMatch, useLocation } from 'react-router-dom'
 import BigNumber from 'bignumber.js'
 import { useWeb3React } from '@web3-react/core'
-import { Image, Heading, RowType, Toggle, Text } from '@panphoenixswap/uikit'
-import { ChainId } from '@panphoenixswap-libs/sdk'
+import { Image, Heading, RowType, Toggle, Text } from '@pancakeswap/uikit'
+import { ChainId } from '@pancakeswap-libs/sdk'
 import styled from 'styled-components'
 import FlexLayout from 'components/layout/Flex'
 import Page from 'components/layout/Page'
-import { useFarms, usePollFarmsData, usePricephoenixBusd } from 'state/hooks'
+import { useFarms, usePollFarmsData, usePriceCakeBusd } from 'state/hooks'
 import usePersistState from 'hooks/usePersistState'
 import { Farm } from 'state/types'
 import { useTranslation } from 'contexts/Localization'
@@ -100,12 +100,12 @@ const StyledImage = styled(Image)`
 `
 const NUMBER_OF_FARMS_VISIBLE = 12
 
-const getDisplayApr = (phoenixRewardsApr?: number, lpRewardsApr?: number) => {
-  if (phoenixRewardsApr && lpRewardsApr) {
-    return (phoenixRewardsApr + lpRewardsApr).toLocaleString('en-US', { maximumFractionDigits: 2 })
+const getDisplayApr = (cakeRewardsApr?: number, lpRewardsApr?: number) => {
+  if (cakeRewardsApr && lpRewardsApr) {
+    return (cakeRewardsApr + lpRewardsApr).toLocaleString('en-US', { maximumFractionDigits: 2 })
   }
-  if (phoenixRewardsApr) {
-    return phoenixRewardsApr.toLocaleString('en-US', { maximumFractionDigits: 2 })
+  if (cakeRewardsApr) {
+    return cakeRewardsApr.toLocaleString('en-US', { maximumFractionDigits: 2 })
   }
   return null
 }
@@ -115,9 +115,9 @@ const Farms: React.FC = () => {
   const { pathname } = useLocation()
   const { t } = useTranslation()
   const { data: farmsLP, userDataLoaded } = useFarms()
-  const phoenixPrice = usePricephoenixBusd()
+  const cakePrice = usePriceCakeBusd()
   const [query, setQuery] = useState('')
-  const [viewMode, setViewMode] = usePersistState(ViewMode.TABLE, { localStorageKey: 'panphoenix_farm_view' })
+  const [viewMode, setViewMode] = usePersistState(ViewMode.TABLE, { localStorageKey: 'pancake_farm_view' })
   const { account } = useWeb3React()
   const [sortOption, setSortOption] = useState('hot')
 
@@ -159,11 +159,11 @@ const Farms: React.FC = () => {
           return farm
         }
         const totalLiquidity = new BigNumber(farm.lpTotalInQuoteToken).times(farm.quoteToken.busdPrice)
-        const { phoenixRewardsApr, lpRewardsApr } = isActive
-          ? getFarmApr(new BigNumber(farm.poolWeight), phoenixPrice, totalLiquidity, farm.lpAddresses[ChainId.MAINNET])
-          : { phoenixRewardsApr: 0, lpRewardsApr: 0 }
+        const { cakeRewardsApr, lpRewardsApr } = isActive
+          ? getFarmApr(new BigNumber(farm.poolWeight), cakePrice, totalLiquidity, farm.lpAddresses[ChainId.MAINNET])
+          : { cakeRewardsApr: 0, lpRewardsApr: 0 }
 
-        return { ...farm, apr: phoenixRewardsApr, lpRewardsApr, liquidity: totalLiquidity }
+        return { ...farm, apr: cakeRewardsApr, lpRewardsApr, liquidity: totalLiquidity }
       })
 
       if (query) {
@@ -174,7 +174,7 @@ const Farms: React.FC = () => {
       }
       return farmsToDisplayWithAPR
     },
-    [phoenixPrice, query, isActive],
+    [cakePrice, query, isActive],
   )
 
   const handleChangeQuery = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -261,7 +261,7 @@ const Farms: React.FC = () => {
     const { token, quoteToken } = farm
     const tokenAddress = token.address
     const quoteTokenAddress = quoteToken.address
-    const lpLabel = farm.lpSymbol && farm.lpSymbol.split(' ')[0].toUpperCase().replace('PANphoenix', '')
+    const lpLabel = farm.lpSymbol && farm.lpSymbol.split(' ')[0].toUpperCase().replace('PANCAKE', '')
 
     const row: RowProps = {
       apr: {
@@ -270,7 +270,7 @@ const Farms: React.FC = () => {
         lpLabel,
         tokenAddress,
         quoteTokenAddress,
-        phoenixPrice,
+        cakePrice,
         originalValue: farm.apr,
       },
       farm: {
@@ -334,7 +334,7 @@ const Farms: React.FC = () => {
                 key={farm.pid}
                 farm={farm}
                 displayApr={getDisplayApr(farm.apr, farm.lpRewardsApr)}
-                phoenixPrice={phoenixPrice}
+                cakePrice={cakePrice}
                 account={account}
                 removed={false}
               />
@@ -346,7 +346,7 @@ const Farms: React.FC = () => {
                 key={farm.pid}
                 farm={farm}
                 displayApr={getDisplayApr(farm.apr, farm.lpRewardsApr)}
-                phoenixPrice={phoenixPrice}
+                cakePrice={cakePrice}
                 account={account}
                 removed
               />
@@ -358,7 +358,7 @@ const Farms: React.FC = () => {
                 key={farm.pid}
                 farm={farm}
                 displayApr={getDisplayApr(farm.apr, farm.lpRewardsApr)}
-                phoenixPrice={phoenixPrice}
+                cakePrice={cakePrice}
                 account={account}
                 removed
               />
@@ -430,7 +430,7 @@ const Farms: React.FC = () => {
         </ControlContainer>
         {renderContent()}
         <div ref={loadMoreRef} />
-        <StyledImage src="/images/decorations/3dpan.png" alt="Panphoenix illustration" width={120} height={103} />
+        <StyledImage src="/images/decorations/3dpan.png" alt="Pancake illustration" width={120} height={103} />
       </Page>
     </>
   )

@@ -1,6 +1,6 @@
 import React from 'react'
 import { useWeb3React } from '@web3-react/core'
-import { Box, Flex, Heading, Text, PrizeIcon, BlockIcon, LinkExternal, useTooltip, InfoIcon } from '@panphoenixswap/uikit'
+import { Box, Flex, Heading, Text, PrizeIcon, BlockIcon, LinkExternal, useTooltip, InfoIcon } from '@pancakeswap/uikit'
 import { useAppDispatch } from 'state'
 import { useTranslation } from 'contexts/Localization'
 import { useBetCanClaim, useGetRewardRate, usePriceBnbBusd } from 'state/hooks'

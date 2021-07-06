@@ -1,29 +1,29 @@
 import React, { useState } from 'react'
-import { AutoRenewIcon, Button, Flex, InjectedModalProps, Text } from '@panphoenixswap/uikit'
+import { AutoRenewIcon, Button, Flex, InjectedModalProps, Text } from '@pancakeswap/uikit'
 import { useTranslation } from 'contexts/Localization'
-import { usephoenix } from 'hooks/useContract'
+import { useCake } from 'hooks/useContract'
 import useToast from 'hooks/useToast'
 import { useProfile } from 'state/hooks'
-import { getPanphoenixProfileAddress } from 'utils/addressHelpers'
+import { getPancakeProfileAddress } from 'utils/addressHelpers'
 import { getFullDisplayBalance } from 'utils/formatBalance'
 import useGetProfileCosts from 'views/Profile/hooks/useGetProfileCosts'
 import { UseEditProfileResponse } from './reducer'
 
-interface ApprovephoenixPageProps extends InjectedModalProps {
+interface ApproveCakePageProps extends InjectedModalProps {
   goToChange: UseEditProfileResponse['goToChange']
 }
 
-const ApprovephoenixPage: React.FC<ApprovephoenixPageProps> = ({ goToChange, onDismiss }) => {
+const ApproveCakePage: React.FC<ApproveCakePageProps> = ({ goToChange, onDismiss }) => {
   const [isApproving, setIsApproving] = useState(false)
   const { profile } = useProfile()
   const { t } = useTranslation()
-  const { numberphoenixToUpdate, numberphoenixToReactivate } = useGetProfileCosts()
-  const phoenixContract = usephoenix()
+  const { numberCakeToUpdate, numberCakeToReactivate } = useGetProfileCosts()
+  const cakeContract = useCake()
   const { toastError } = useToast()
-  const cost = profile.isActive ? numberphoenixToUpdate : numberphoenixToReactivate
+  const cost = profile.isActive ? numberCakeToUpdate : numberCakeToReactivate
 
   const handleApprove = async () => {
-    const tx = await phoenixContract.approve(getPanphoenixProfileAddress(), cost.times(2).toJSON())
+    const tx = await cakeContract.approve(getPancakeProfileAddress(), cost.times(2).toJSON())
     setIsApproving(true)
     const receipt = await tx.wait()
     if (receipt.status) {
@@ -42,7 +42,7 @@ const ApprovephoenixPage: React.FC<ApprovephoenixPageProps> = ({ goToChange, onD
     <Flex flexDirection="column">
       <Flex alignItems="center" justifyContent="space-between" mb="24px">
         <Text>{profile.isActive ? t('Cost to update:') : t('Cost to reactivate:')}</Text>
-        <Text>{getFullDisplayBalance(cost)} phoenix</Text>
+        <Text>{getFullDisplayBalance(cost)} CAKE</Text>
       </Flex>
       <Button
         disabled={isApproving}
@@ -61,4 +61,4 @@ const ApprovephoenixPage: React.FC<ApprovephoenixPageProps> = ({ goToChange, onD
   )
 }
 
-export default ApprovephoenixPage
+export default ApproveCakePage

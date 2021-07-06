@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Heading, CardBody, CardFooter, PanphoenixRoundIcon, TicketRound } from '@panphoenixswap/uikit'
+import { Heading, CardBody, CardFooter, PancakeRoundIcon, TicketRound } from '@pancakeswap/uikit'
 import { useTranslation } from 'contexts/Localization'
 import { DataResponse } from 'utils/getLotteryRoundData'
 import LotteryCardHeading from '../LotteryCardHeading'
@@ -53,7 +53,7 @@ const PastRoundCardDetails: React.FC<PastRoundCardDetailsProps> = ({ data }) => 
             >
               {t('Winning numbers')}
             </TopLotteryCardHeading>
-            <LotteryCardHeading valueToDisplay={`${poolSize.toLocaleString()} phoenix`} Icon={PanphoenixRoundIcon}>
+            <LotteryCardHeading valueToDisplay={`${poolSize.toLocaleString()} CAKE`} Icon={PancakeRoundIcon}>
               {t('Total prizes')}
             </LotteryCardHeading>
           </CardHeading>

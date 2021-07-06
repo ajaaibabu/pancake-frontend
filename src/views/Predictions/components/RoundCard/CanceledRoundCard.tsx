@@ -1,5 +1,5 @@
 import React from 'react'
-import { CardBody, Text, Flex, BlockIcon, LinkExternal } from '@panphoenixswap/uikit'
+import { CardBody, Text, Flex, BlockIcon, LinkExternal } from '@pancakeswap/uikit'
 import { useTranslation } from 'contexts/Localization'
 import { Round, BetPosition } from 'state/types'
 import { useGetTotalIntervalBlocks } from 'state/hooks'
@@ -42,7 +42,7 @@ const CanceledRoundCard: React.FC<CanceledRoundCardProps> = ({ round }) => {
               {t('Round Canceled')}
             </Text>
             {isRefundable && <ReclaimPositionButton epoch={epoch} onSuccess={handleSuccess} width="100%" my="8px" />}
-            <LinkExternal href="https://docs.panphoenixswap.finance/products/prediction" external>
+            <LinkExternal href="https://docs.pancakeswap.finance/products/prediction" external>
               {t('Learn More')}
             </LinkExternal>
           </Flex>

@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Modal, Text, LinkExternal, Flex, Box } from '@panphoenixswap/uikit'
+import { Modal, Text, LinkExternal, Flex, Box } from '@pancakeswap/uikit'
 import { useTranslation } from 'contexts/Localization'
 import { tokenEarnedPerThousandDollarsCompounding, getRoi } from 'utils/compoundApyHelpers'
 
@@ -59,7 +59,7 @@ const ApyCalculatorModal: React.FC<ApyCalculatorModalProps> = ({
   displayApr,
   linkLabel,
   linkHref,
-  earningTokenSymbol = 'phoenix',
+  earningTokenSymbol = 'CAKE',
   roundingDecimals = 2,
   compoundFrequency = 1,
   performanceFee = 0,

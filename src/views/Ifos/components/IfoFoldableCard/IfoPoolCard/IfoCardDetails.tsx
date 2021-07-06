@@ -1,5 +1,5 @@
 import React from 'react'
-import { Text, Flex, Box, Skeleton } from '@panphoenixswap/uikit'
+import { Text, Flex, Box, Skeleton } from '@pancakeswap/uikit'
 import { PublicIfoData } from 'views/Ifos/types'
 import { useTranslation } from 'contexts/Localization'
 import { Ifo, PoolIds } from 'config/constants/types'
@@ -59,7 +59,7 @@ const IfoCardDetails: React.FC<IfoCardDetailsProps> = ({ poolId, ifo, publicIfoD
         <>
           {poolId === PoolIds.poolBasic && <FooterEntry label={t('Max. LP token entry')} value={maxLpTokens} />}
           <FooterEntry label={t('Funds to raise:')} value={ifo[poolId].raiseAmount} />
-          <FooterEntry label={t('phoenix to burn:')} value={ifo[poolId].phoenixToBurn} />
+          <FooterEntry label={t('CAKE to burn:')} value={ifo[poolId].cakeToBurn} />
           <FooterEntry
             label={t('Price per %symbol%:', { symbol: ifo.token.symbol })}
             value={`$${ifo.tokenOfferingPrice}`}
@@ -83,7 +83,7 @@ const IfoCardDetails: React.FC<IfoCardDetailsProps> = ({ poolId, ifo, publicIfoD
           {poolId === PoolIds.poolUnlimited && <FooterEntry label={t('Additional fee:')} value={taxRate} />}
           <FooterEntry label={t('Total committed:')} value={currencyPriceInUSD.gt(0) ? totalCommitted : null} />
           <FooterEntry label={t('Funds to raise:')} value={ifo[poolId].raiseAmount} />
-          <FooterEntry label={t('phoenix to burn:')} value={ifo[poolId].phoenixToBurn} />
+          <FooterEntry label={t('CAKE to burn:')} value={ifo[poolId].cakeToBurn} />
           <FooterEntry
             label={t('Price per %symbol%:', { symbol: ifo.token.symbol })}
             value={`$${ifo.tokenOfferingPrice ? ifo.tokenOfferingPrice : '?'}`}
